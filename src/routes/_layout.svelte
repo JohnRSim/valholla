@@ -90,22 +90,22 @@ footer a {
 		<nav>
 			<ul>
 				<li>
-					<a class="ico_fb" target="_blank" rel="me noopener" href="https://www.facebook.com/valholla">Facebook</a>
+					<a class="ico_fb" target="_blank" rel="me noopener" href="https://www.facebook.com/val-holla">Facebook</a>
 				</li>
 				<li>
-					<a class="ico_ig" target="_blank" rel="me noopener" href="https://www.instagram.com/valholla">Instagram</a>
+					<a class="ico_ig" target="_blank" rel="me noopener" href="https://www.instagram.com/val-holla">Instagram</a>
 				</li>
 				<li>
-					<a class="ico_tw" target="_blank" rel="me noopener" href="https://twitter.com/valhollavalholla">Twitter</a>
+					<a class="ico_tw" target="_blank" rel="me noopener" href="https://twitter.com/val-holla">Twitter</a>
 				</li>
 				<li>
 					<a class="ico_yt" target="_blank" rel="me noopener" href="https://www.youtube.com/channel/">Youtube</a>
 				</li>
 				<li>
-					<a class="ico_pi" target="_blank" rel="me noopener" href="https://www.pinterest.co.uk/valholla/">Pinterest</a>
+					<a class="ico_pi" target="_blank" rel="me noopener" href="https://www.pinterest.co.uk/val-holla/">Pinterest</a>
 				</li>
 				<li>
-					<a class="ico_md" target="_blank" rel="me noopener" href="https://mstdn.social/@valholla">Mastodon</a>
+					<a class="ico_md" target="_blank" rel="me noopener" href="https://mstdn.social/@val-holla">Mastodon</a>
 				</li>
 				<li style="display:none;"><a href="/sitemap.xml">SiteMap</a></li>
 			</ul>
