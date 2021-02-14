@@ -1,18 +1,18 @@
 {
 	"background_color": "#ffffff",
 	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
+	"name": "Val-hölla",
+	"short_name": "Val-hölla",
 	"display": "minimal-ui",
-	"start_url": "/",
+	"start_url": "/?source=pwa",
 	"icons": [
 		{
-			"src": "logo-192.png",
+			"src": "192.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "logo-512.png",
+			"src": "512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		}

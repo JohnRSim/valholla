@@ -1,50 +1,50 @@
 <script>
-	import successkid from 'images/successkid.jpg';
 </script>
 
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
+	.overview {
+		width: 300px;
+		margin: 0px auto;
 	}
-
-	h1 {
-		font-size: 2.8em;
+	button {
+		color: rgba(255,255,255,0.5);
 		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
+		background: rgba(255,255,255,0.05);
+		border-radius: 60px;
+		padding:8px 16px;
+		border:0px;
+		letter-spacing: 1px;
+		font-size: 0.8em;
 	}
-
-	figure {
-		margin: 0 0 1em 0;
+	h1 {
+		overflow: hidden;
+		position: relative;
+	}
+	h1 span {
+		position: absolute;
+		left:-9999px;
 	}
 
 	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+		opacity: 0.6;
 	}
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Home:: Val-hölla</title>
+	<meta name="description" content="The perfect place to chat, invest and expand the Solana ecosystem">
 </svelte:head>
 
-<h1>Great success!</h1>
+<section class="overview">
+	<h1>
+		<span>Val-hölla</span>
+		<img src="/img/logo_valholla.png" width="219" height="139" alt="Val-holla "/>
+	</h1>
+	
+	<button>
+		Coming soon...
+		<button>#Valholla</button>	
+	</button>
+</section>
 
-<figure>
-	<img alt="Success Kid" src="{successkid}">
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
