@@ -26,7 +26,7 @@
 	}
 
 	img {
-		opacity: 0.6;
+		/*opacity: 0.6;*/
 	}
 </style>
 
@@ -38,7 +38,7 @@
 <section class="overview">
 	<h1>
 		<span>Val-hölla</span>
-		<img src="/img/logo_valholla.png" width="219" height="139" alt="Val-holla "/>
+		<img src="/img/logo_valholla.png" width="220" height="140" alt="Val-holla "/>
 	</h1>
 	
 	<button>
