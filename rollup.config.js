@@ -1,6 +1,7 @@
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+//import sveltePreprocess from 'svelte-preprocess';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import url from '@rollup/plugin-url';
@@ -32,7 +33,7 @@ export default {
 				compilerOptions: {
 					dev,
 					hydratable: true
-				}
+				},
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
