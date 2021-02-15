@@ -77,12 +77,16 @@
 	let activePageLayout = '';
 	let showLeftPanel = false;
 	let showRightPanel = false;
+	let internalTheme = 'default';
 
 	//solana
 	let connection;
 	let defaultNetwork = 'testnet'; //[testnet,api.mainnet-beta,localhost]
 	let providerUrl;
 	let LAMPORTS_PER_SOL = 0;
+
+	//reactive
+	$: theme = $sApp.theme;
 	
 	//on mount set defaults
 	onMount(async() => {
@@ -943,7 +947,13 @@
 
 	#S-navPanel header {
 		padding:15px;
-    	border-bottom: 1px solid #f2f2f2
+		background-image: url("/img/hack.svg");
+		background-color: #c4014b;
+		background-position: right 15px top 15px;
+		background-size: 150px;
+		background-repeat: no-repeat;
+		color: #fff;
+		border: 0px;
 	}
 
 	#S-navPanel header h1 {
@@ -954,11 +964,11 @@
    		/*margin-bottom: 2px;*/
 	}
 
-	#S-navPanel header h2 {
+	/*#S-navPanel header h2 {
 		font-size:0.875em;
 		font-weight: normal;
 		margin:0px;
-	}
+	}*/
 
 	nav {
 		flex:1;
@@ -1081,6 +1091,14 @@
 </style>
 
 <svelte:head>
+	{#if theme}
+  		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="themes/core/{theme}-theme.css">
+		<link rel="stylesheet" href="themes/core/{theme}-theme.css" media="print" onload="this.media='all'">
+	{/if}
+	{#if internalTheme}
+  		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="themes/internal/{internalTheme}-theme.css">
+		<link rel="stylesheet" href="themes/internal/{internalTheme}-theme.css" media="print" onload="this.media='all'">
+	{/if}
 	{#if browserThemeColor}
 		<meta name="theme-color" content="{browserThemeColor}">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">

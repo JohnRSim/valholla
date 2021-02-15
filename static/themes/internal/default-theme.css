@@ -1,0 +1,42 @@
+/**
+ * Light Theme
+ */
+
+:root {
+  --bg-app: #fff;
+  --border-app: #F3F4F5;
+  --bg-card: #fff;
+  --bg-hr-app:#F1F1F1;
+  --color-title-card: #323232;
+  --color-seperator-sidenav:#F1F1F1;
+  --border-components: none;
+  --logo-login: url("/logo_black.svg");
+  --content-strap: "PERSONALISED EMPLOYEE PORTAL";
+  --bg-login: url("/img/banners/login-image.jpg");
+  --bg-input-login: #F2F2F2;
+  --color-input-login: #000;
+  --color-links-login: #fff;
+  --color-inputplaceholder-login: #a9a9a9;
+  --bg-button-secondary-login:#4A67F3;
+  --color-core:#333;
+  --hamburger-core:#000;
+  --color-headernav:#000;
+  --bg-label-seperator-documents:#f7f9fa;
+  --color-label-seperator-documents:#637282;
+  --color-item-title-documents:#252133;
+  --color-icons-documents:#000;
+  --border-search:#F4F4F4;
+  --bg-search:#FCFCFC;
+  --bg-input-search:#fff;
+  --border-input-search:#DDDDDD;
+  --color-input-search:#657483;
+  --color-placeholder-search:#a4a2a9;
+  --color-filterlist-navheader: #000;
+  --border-footer-chat:#EAEAEA;
+  --bg-input-chat:#F0F0F0;
+  --color-input-chat:#000;
+  --color-placeholder-chat:#a9a9a9;
+  --cursor-color:#000;
+  --bgColor: 74, 103, 243;
+  /*--filter-logo-login: invert(.5) sepia(1);*/
+}
