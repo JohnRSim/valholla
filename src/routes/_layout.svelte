@@ -75,6 +75,7 @@
 		console.log(providerUrl)
 		
 		//connect to network
+		/*
 		await establishConnection(defaultNetwork).catch((err) => {
 			console.warn(`[Network Connection Error]`,err);
 		});
@@ -89,6 +90,7 @@
 		}).catch(() => {
 			console.warn(`[Wallet Connection Error]`,err);
 		});
+		*/
 
 		//subscribe to page loads
 		page.subscribe(async(value) => {
@@ -419,6 +421,7 @@ footer a {
 <!-- valholla Site Wrapper -->
 <div id="V-siteWrapper">
 
+	<div on:click="{() => {navTo('/')}}">test</div>
 	<main>
 		<slot></slot>
 	</main>
