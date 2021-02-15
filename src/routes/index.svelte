@@ -1,4 +1,23 @@
 <script>
+	//svelte
+	import { onDestroy, onMount } from 'svelte';
+
+	//utils
+	import { navTo } from './route.js';
+
+	let isMounted = false;
+
+	onMount(() => {
+		console.info('[/][Mount]');
+		isMounted = true;
+			
+	});
+
+	onDestroy(() => {
+		if (process.browser) {
+			console.info('[/][Destroy]');
+		}
+	});
 </script>
 
 <style>
@@ -35,8 +54,9 @@
 	<meta name="description" content="The perfect place to chat, invest and expand the Solana ecosystem">
 </svelte:head>
 
+{#if (isMounted)}
 <section class="overview">
-	<h1>
+	<h1 on:click="{() => { navTo('/feed/Home'); }}">
 		<span>Val-hölla</span>
 		<img src="/img/logo_valholla.png" width="220" height="140" alt="Val-holla "/>
 	</h1>
@@ -46,5 +66,4 @@
 		<button>#Valholla</button>	
 	</button>
 </section>
-
-
+{/if}
