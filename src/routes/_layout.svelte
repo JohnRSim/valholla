@@ -60,6 +60,7 @@
 	let isMounted = false;
 	let profilePhoto = '/img/profile-option1.svg';
 	let browserThemeColor = '#140F26';
+	let isIOS = false;
 	
 
 	//bind 
@@ -1091,6 +1092,11 @@
 </style>
 
 <svelte:head>
+	{#if (isIOS)}
+		<link rel="manifest" href="manifestIOS.json" crossorigin="use-credentials" />
+	{:else}
+		<link rel="manifest" href="manifestv1.json" crossorigin="use-credentials" />
+	{/if}
 	{#if theme}
   		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="themes/core/{theme}-theme.css">
 		<link rel="stylesheet" href="themes/core/{theme}-theme.css" media="print" onload="this.media='all'">
