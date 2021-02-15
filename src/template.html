@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<meta name="theme-color" content="#333333">
-
+	<meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no, viewport-fit=cover">
+	
 	%sapper.base%
 
 	<!-- Important for initial load -->
@@ -90,25 +89,24 @@
 	</style>
 	<!-- xImportant for initial load -->
 
-	<link rel="stylesheet" href="global.css">
-	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+	<!-- Global styles reused across app does nto work in ff -->
+	<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" 
+		href="global.css" 
+		/>
 	<link rel="icon" type="image/png" href="favicon.png">
 
-	<!-- Sapper creates a <script> tag containing `src/client.js`
-	     and anything else it needs to hydrate the app and
-	     initialise the router -->
-	%sapper.scripts%
+	<link rel="preconnect" href="https://val-holla.com">
+	<link rel="dns-prefetch" href="https://val-holla.com">
 
-	<!-- Sapper generates a <style> tag containing critical CSS
-	     for the current page. CSS for the rest of the app is
-	     lazily loaded when it precaches secondary pages -->
+	<meta name="referrer" content="no-referrer-when-downgrade" />
+
 	%sapper.styles%
-
-	<!-- This contains the contents of the <svelte:head> component, if
-	     the current page has one -->
 	%sapper.head%
 </head>
 <body>
 	<div id="valholla">%sapper.html%</div>
+	
+	%sapper.scripts%
+
 </body>
 </html>
