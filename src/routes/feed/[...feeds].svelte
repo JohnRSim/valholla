@@ -28,8 +28,18 @@
 	
 	//Nav
 	export let feeds = 'Home';
-	//export let tab = '';
+	export let tab = '';
 	
+	//console
+	const Inf = 'background-color: #f8ffff; color: #276f86';
+	
+	if (tab) {
+		console.info('%c[==========]',Inf);
+		console.info(`%c[Tab][${tab}]`,Inf);
+		console.info('%c[==========]',Inf);
+	}
+
+
 	let isMounted = false;
 
 	onMount(async () => {
