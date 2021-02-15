@@ -1084,67 +1084,69 @@
 
 
 {#if $isLoading}
-  <div class="loading">Loading...</div>
+	<!-- Loading app -->
+	<div class="loading">Loading...</div>
+	<!-- xLoading app -->
 {:else}
-<!-- valholla Site Wrapper -->
-<div id="V-siteWrapper" class="gpu_acc {activePageLayout}" dir="{langDirection}">
-	<div id="V-site">
-		{#if ($sRoute.activeroute !== '/*')}
-			<!-- Drawer Menu -->
-			<aside id="S-drawerMenu" bind:this="{drawerMenu}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({drawerMenuPos}, 0px, 0px);">
-				<div id="S-navPanel">
-					<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/profile/${userID}`); }}">
-						<Avatar size="thumbnail" profileImg="{profilePhoto}" />
-						<h1 style="margin-top:15px;">
-							Anonymous
-						</h1>
-					</header>
-					<div id="followingPanel" class="underlay">
-						<span on:click="{() => { resetToContentView('home'); navTo(`/following/16001`)} }"><b>0</b> Following</span> 
-						<span on:click="{() => { resetToContentView('home'); navTo(`/followers/16001`)} }"><b>0</b> Followers</span> 
-					</div>
-					<nav>
-						<ul style="padding:5px 0px;">
-							<li on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo('/feed/Home'); }}">{$_('template.side_nav.home')}</li>
-							<li on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo('/feed/Apps'); }}">My Apps</li>
-							
-						</ul>
-					</nav>
-					<footer>
+	<!-- valholla Site Wrapper -->
+	<div id="V-siteWrapper" class="gpu_acc {activePageLayout}" dir="{langDirection}">
+		<div id="V-site">
+			{#if ($sRoute.activeroute !== '/*')}
+				<!-- Drawer Menu -->
+				<aside id="S-drawerMenu" bind:this="{drawerMenu}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({drawerMenuPos}, 0px, 0px);">
+					<div id="S-navPanel">
+						<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/`); }}">
+							<Avatar size="thumbnail" profileImg="{profilePhoto}" />
+							<h1 style="margin-top:15px;">
+								Anonymous
+							</h1>
+						</header>
+						<div id="followingPanel" class="underlay">
+							<span on:click="{() => { resetToContentView('home'); navTo(`/`)} }"><b>0</b> Following</span> 
+							<span on:click="{() => { resetToContentView('home'); navTo(`/`)} }"><b>0</b> Followers</span> 
+						</div>
 						<nav>
-							<ul>
+							<ul style="padding:5px 0px;">
+								<li on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo('/feed/Home'); }}">{$_('template.side_nav.home')}</li>
+								<li on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo('/feed/Apps'); }}">My Apps</li>
+								
 							</ul>
 						</nav>
-						<div id="S-version">
-							Version No. {$sApp.version}-{$sApp.environment}
-						</div>
-					</footer>
-				</div>
-				<div style="min-width:20%" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); }}"></div>
-			</aside>
-			<!-- xDrawer Menu -->
+						<footer>
+							<nav>
+								<ul>
+								</ul>
+							</nav>
+							<div id="S-version">
+								Version No. {$sApp.version}-{$sApp.environment}
+							</div>
+						</footer>
+					</div>
+					<div style="min-width:20%" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); }}"></div>
+				</aside>
+				<!-- xDrawer Menu -->
 
-			<!-- Chat Menu -->
-			<aside id="S-chatView" bind:this="{chatview}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({chatMenuPos}, 0px, 0px);">
-				<div on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">Close Chat</div>
-			</aside>
-			<!-- xChat Menu -->
-			
-			
-			<!-- class:blur="{((enableInset || enableOutset) && !(scrollHorizontal))}"-->
-			<div class="gpu_accx" class:blur="{blur}" bind:this="{navMaskEle}" id="S-mask"><div class="maskBlur" style="opacity:{opacityVal};"></div></div>
-		{/if}
+				<!-- Chat Menu -->
+				<aside id="S-chatView" bind:this="{chatview}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({chatMenuPos}, 0px, 0px);">
+					<div on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">Close Chat</div>
+				</aside>
+				<!-- xChat Menu -->
+				
+				
+				<!-- class:blur="{((enableInset || enableOutset) && !(scrollHorizontal))}"-->
+				<div class="gpu_accx" class:blur="{blur}" bind:this="{navMaskEle}" id="S-mask"><div class="maskBlur" style="opacity:{opacityVal};"></div></div>
+			{/if}
 
-		
-		<!-- Page Content -->
-		<div id="S-mainContent" class="gpu_acc" class:inset="{enableInset}" class:outset="{enableOutset}">
-			<main>
-				<slot></slot>
-			</main>
+			
+			<!-- Page Content -->
+			<div id="S-mainContent" class="gpu_acc" class:inset="{enableInset}" class:outset="{enableOutset}">
+				<main>
+					<slot></slot>
+				</main>
+			</div>
+			<!-- xPage Content -->
 		</div>
-		<!-- xPage Content -->
-	</div>
 
-</div>
+	</div>
+	<!-- valholla Site Wrapper -->
 {/if}
-<!-- valholla Site Wrapper -->
