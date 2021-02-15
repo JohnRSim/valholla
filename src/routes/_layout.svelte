@@ -59,6 +59,7 @@
 	//defaults
 	let isMounted = false;
 	let profilePhoto = '/img/profile-option1.svg';
+	let browserThemeColor = '#140F26';
 	
 
 	//bind 
@@ -1078,6 +1079,15 @@
 		pointer-events: none;
 	}
 </style>
+
+<svelte:head>
+	{#if browserThemeColor}
+		<meta name="theme-color" content="{browserThemeColor}">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="msapplication-navbutton-color" content="{browserThemeColor}">
+	{/if}
+</svelte:head>
+
 
 <svelte:window on:resize={windowResize} on:touchstart="{scrollStart}" on:touchmove="{checkScrollDirection}" on:touchend="{scrollEnd}"/>
 

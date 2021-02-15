@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>option1</title>
+    <defs>
+        <circle id="path-1" cx="27" cy="27" r="27"></circle>
+    </defs>
+    <g id="additional-assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="profile-options" transform="translate(-1266.000000, -14.000000)">
+            <g id="option1" transform="translate(1266.000000, 14.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#333333" xlink:href="#path-1"></use>
+                <path d="M27.001331,14 C34.476081,14 39.679755,21.149 32.5995182,34.517 C30.3470992,38.77175 34.782957,39.8844805 39.7524005,41.0326678 L40.2347736,41.144 C44.8609283,42.2135 45.0169335,44.5145 44.9989329,48.5465 L44.9989329,48.5465 L44.996,48.916 L45,49 C45,49.0305984 44.9990105,49.0617465 44.99704,49.0934284 L44.9929327,50 L44.7423885,50.0004354 C43.2929453,53.1969627 35.9009562,59 27,59 C18.0990438,59 10.7070547,53.1969627 9.25761152,50.0004354 L9.00672925,50 L9.002,49.061 L9,49 C9,48.9824303 9.00032624,48.9648818 9.00097713,48.9473549 L9.00072905,48.5 C8.98572855,44.498 9.15823432,42.209 13.7678885,41.144 C18.8155573,39.9785 23.7987239,38.9345 21.4031438,34.517 C14.3049064,21.4235 19.3780761,14 27.001331,14 Z" id="Path-2" fill="#8C8C8C" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
