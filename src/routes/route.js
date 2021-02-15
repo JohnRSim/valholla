@@ -4,12 +4,16 @@ import { stores, goto } from '@sapper/app';
 //stores
 import { user as sUser } from '../stores/user.js';
 
+
 let $sUser = {};
 sUser.subscribe((v) => {
 	$sUser = v.userToken;
 });
 
 let activeNav;
+//page.subscribe(activePage => {
+//	activeNav = activePage;
+//});
 
 /**
  * detect if iOS
@@ -41,21 +45,16 @@ function navTo(config) {
 	if (typeof (config) === 'object') {
 		path = config.path;
 	}
-
-	//stores
-	const { page } = stores();
-
-	page.subscribe(activePage => {
-		activeNav = activePage;
-	});
+	//const { page } = stores();
+	
 
 	//Goto page
-	if ((activeNav.path !== path) && (document)) {
+	//if ((activeNav.path !== path) && (document)) {
 		//redirect to path
 		goto(path, { replaceState: (is_iOS()) }).then(() => {
 			console.log('[NavTo][Redirected]', path);
 		});
-	}
+	//}
 }
 
 /**
