@@ -8,6 +8,7 @@ const setup = {
     version: "0.0.1",
     stickyScrollTarget: "body",
     language: "en", 
+    theme: "light", 
     uiType: "Mobile", //[Mobile,Desktop]
     lockScroll: false,
     disablePullToRefresh: false,
