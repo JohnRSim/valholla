@@ -9,13 +9,19 @@
     "start": "node __sapper__/build"
   },
   "dependencies": {
+    "@project-serum/sol-wallet-adapter": "^0.1.4",
+    "@solana/spl-token": "0.0.13",
+    "@solana/spl-token-swap": "^0.1.0",
+    "@solana/web3.js": "^0.91.3",
+    "bip32": "^2.0.6",
+    "bip39": "^3.0.3",
     "compression": "^1.7.1",
+    "javascript-time-ago": "^2.3.4",
     "polka": "next",
+    "sdbm": "^1.2.0",
     "sirv": "^1.0.0"
   },
   "devDependencies": {
-    "sapper": "^0.28.0",
-    "svelte": "^3.17.3",
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
@@ -23,11 +29,14 @@
     "@babel/runtime": "^7.0.0",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-replace": "^2.2.0",
     "@rollup/plugin-url": "^5.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0"
+    "rollup-plugin-terser": "^7.0.0",
+    "sapper": "^0.28.0",
+    "svelte": "^3.17.3"
   }
 }
