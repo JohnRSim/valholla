@@ -53,16 +53,10 @@ body {
 	height: 100%;
 	overflow: auto;
 }
-#sapper {
+#valholla {
     height: 100%;
     display: flex;
     flex-direction: row;
-}
-
-#V-siteWrapper {
-	width: 100%;
-    align-self: center;
-    text-align: center;
 }
 
 
