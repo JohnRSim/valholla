@@ -9,6 +9,8 @@
     "start": "node __sapper__/build"
   },
   "dependencies": {
+    "@solana/web3.js": "^0.91.3",
+    "borsh": "^0.3.1",
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^1.0.0"
