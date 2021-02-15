@@ -1,5 +1,14 @@
+<script context="module">
+  import { waitLocale } from 'svelte-i18n';
+  export async function preload(page) {
+    return waitLocale();
+  }
+</script>
+
 <script>
-	
+	//sapper
+	import { stores } from '@sapper/app';
+
 	//svelte
 	import { onDestroy, onMount, tick } from 'svelte';
 
@@ -9,20 +18,47 @@
 	//Web3
 	import {
 		Connection,
-		clusterApiUrl,
+		//clusterApiUrl,
 		Account,
 	} from '@solana/web3.js';
+
+	//stores
+	import { route as sRoute } from '../stores/routes.js';
+
+	//utils
+	import { navTo, goBack } from './route.js';
+	
+	//machine learning sentament analysis
+	//import * as toxicity from '@tensorflow-models/toxicity';
+	//import '@tensorflow/tfjs-backend-webgl';
+
 
 	//base path
 	export let segment;
 	if (segment) {
-		console.log(`[path][${segment}]`);
+		console.info('%c[==========]',Inf);
+		console.info(`%c[Segment][${segment}]`,Inf);
+		console.info('%c[==========]',Inf);
 	}
+
+	//grab app core stores
+	const { preloading, page, session } = stores();
 
 	//console
 	const Inf = 'background-color: #f8ffff; color: #276f86';
 
 	//defaults
+	let isMounted = false;
+
+	//route
+	let activeTab = false;
+	let scrolltarget;
+	let scrollBody = '.scrollable';
+	let routeCheck = {};
+	let displayNav = false;
+	let hasTabs = false;
+
+	//solana
 	let connection;
 	let defaultNetwork = 'testnet'; //[testnet,api.mainnet-beta,localhost]
 	let providerUrl;
@@ -31,6 +67,8 @@
 	//on mount set defaults
 	onMount(async() => {
 		console.info('%c[Layout][Mount]',Inf);
+
+		isMounted = true;
 		
 		//setup provider url
 		providerUrl = `https://www.sollet.io/#origin=${window.location.origin}&network=${defaultNetwork.replace(/api.mainnet-beta/g,'mainnet')}`;
@@ -50,6 +88,64 @@
 			}
 		}).catch(() => {
 			console.warn(`[Wallet Connection Error]`,err);
+		});
+
+		//subscribe to page loads
+		page.subscribe(async(value) => {
+			console.info('%c[Layout][Page Changed]',Inf,value);
+			
+			const urlParams = new URLSearchParams(window.location.search);
+			activeTab = urlParams.get('tab');
+			
+			const pathArr = value.path.split('/');
+
+			//setup global defaults
+			scrolltarget = $sRoute.global.scrolltarget;
+			scrollBody = $sRoute.global.scrollBody;
+			displayNav = $sRoute.global.displayNav;
+
+			//update globals based off define route vars
+			let updateCheck = value.path;
+			routeCheck = $sRoute.path[`${updateCheck}`];
+
+			//if route not found check dynamic routes
+			if (typeof(routeCheck) === 'undefined') {
+				const route = pathArr.slice(0);
+				sRoute.updateVal('activeID',route[route.length-1]);
+				route.pop();
+				
+				updateCheck = `${route.join('/')}/*`;
+				routeCheck = $sRoute.path[updateCheck];
+			} else {
+				sRoute.updateVal('activeID',null);
+			}
+			
+			//check active route can be found
+			if (typeof(routeCheck) !== 'undefined') {
+				//console.log('updating route values...',routeCheck);
+				sRoute.updateVal('activeroute',updateCheck);
+				
+				scrolltarget = (typeof(routeCheck.scrollTarget) !== 'undefined')?routeCheck.scrollTarget: scrolltarget;
+				scrollBody = (typeof(routeCheck.scrollBody) !== 'undefined')?routeCheck.scrollBody: scrollBody;
+				displayNav = (typeof(routeCheck.displayNav) !== 'undefined')?routeCheck.displayNav: displayNav;
+
+				if (hasTabs) {
+					const currentPath = `${window.location.pathname}${window.location.search}`;
+					let tabPos = 0;
+					hasTabs.forEach((tab, i) => {
+						if (tab.path === currentPath) {
+							tabPos = i;
+						}
+					});
+				}
+
+				//update active tab if available
+				if ((typeof(activeTab) !== 'string') && (typeof(routeCheck.hasTabs) !== 'undefined')) {
+					if (routeCheck.hasTabs.length > 0) {
+						activeTab = routeCheck.hasTabs[0].name;
+					}
+				}
+			}
 		});
 	});
 
