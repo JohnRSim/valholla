@@ -70,7 +70,7 @@ window.addEventListener('offline', () => {
 
 
 sapper.start({
-	target: document.querySelector('#sapper')
+	target: document.querySelector('#valholla')
 }).then(() => {
 	console.info('%c[==========]',Inf);
 	console.info('%c[Val-hölla][Ready]',Inf);
