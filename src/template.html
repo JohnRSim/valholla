@@ -7,6 +7,89 @@
 
 	%sapper.base%
 
+	<!-- Important for initial load -->
+	<style>
+		* {
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			-webkit-tap-highlight-color: transparent;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			outline:none;
+		}
+
+		*, ::after, ::before {
+			box-sizing: border-box;
+		}
+
+		input {
+			-webkit-user-select: initial;
+			-khtml-user-select: initial;
+			-moz-user-select: initial;
+			-ms-user-select: initial;
+			user-select: initial;
+		}
+
+		html {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+			height: 100%;
+			position: fixed;
+			overflow: hidden;
+			width:100%;
+		}
+
+		body {
+			margin:0px;
+			padding:0px;
+			font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+				Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			overflow:none;
+			height: 100%;
+			position: relative;
+			background:#fff;
+			color:#fff;
+		}
+
+		img {
+			max-width:100%;
+			height: auto;
+			display: block;
+		}
+
+		::marker {
+			background:transparent !important;
+			color: transparent !important;
+		}
+
+		.autoTransition {
+			transition: transform 0.3s, opacity 0.3s;
+		}
+
+		.scrollable {
+			overflow-y: scroll;
+			overflow-x: hidden;
+			scrollbar-width: none;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			display: flex;
+		}
+
+		/* FFirefox fix */
+		@media only screen and (min-width: 966px) {
+			.scrollable {
+				scrollbar-width:unset;
+			}
+		}
+	</style>
+	<!-- xImportant for initial load -->
+
 	<link rel="stylesheet" href="global.css">
 	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
 	<link rel="icon" type="image/png" href="favicon.png">
@@ -26,8 +109,6 @@
 	%sapper.head%
 </head>
 <body>
-	<!-- The application will be rendered inside this element,
-	     because `src/client.js` references it -->
-	<div id="sapper">%sapper.html%</div>
+	<div id="valholla">%sapper.html%</div>
 </body>
 </html>
