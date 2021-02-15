@@ -1,6 +1,8 @@
 //sapper
 import * as sapper from '@sapper/app';
 
+import { navTo } from './routes/route';
+
 // i18n
 import { startClient } from './i18n.js';
 
