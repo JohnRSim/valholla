@@ -36,10 +36,10 @@
 
 <style>
     .hasBorder {
- 	    box-shadow: 0px 0px 0px 4px var(--bg-input-login);
+ 	    box-shadow: 0px 0px 0px 4px #fff;
     }
     .microFlag.hasBorder {
- 	    box-shadow: 0px 0px 0px 2px var(--bg-input-login);
+ 	    box-shadow: 0px 0px 0px 2px #fff;
     }
     .inputWrapped {
         width:34px;
