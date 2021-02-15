@@ -11,6 +11,7 @@ const setup = {
     uiType: "Mobile", //[Mobile,Desktop]
     lockScroll: false,
     disablePullToRefresh: false,
+    environment: appConfig.instance,
 };
 
 /**
