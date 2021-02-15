@@ -1,7 +1,9 @@
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+//import sveltePreprocess from 'svelte-preprocess';
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import url from '@rollup/plugin-url';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
@@ -31,7 +33,7 @@ export default {
 				compilerOptions: {
 					dev,
 					hydratable: true
-				}
+				},
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -39,9 +41,11 @@ export default {
 			}),
 			resolve({
 				browser: true,
-				dedupe: ['svelte']
+				dedupe: ['svelte'],
+				preferBuiltins: false
 			}),
-			commonjs(),
+			commonjs({preferBuiltins: false}),
+			json(),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -91,9 +95,11 @@ export default {
 				emitFiles: false // already emitted by client build
 			}),
 			resolve({
-				dedupe: ['svelte']
+				dedupe: ['svelte'],
+				preferBuiltins: false
 			}),
-			commonjs()
+			commonjs({preferBuiltins: false}),
+			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 

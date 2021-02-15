@@ -3,3 +3,18 @@
 # Val-hölla
 The perfect place to chat, invest and expand the Solana ecosystem
 
+## Installation
+```
+git clone https://github.com/JohnRSim/valholla
+cd valholla
+npm install
+```
+
+## Running
+```
+cd valholla
+npm run dev
+```
+
+## Usage
+1. Navigate to http://localhost:3000
