@@ -38,7 +38,9 @@
 
 	//core
 	import Avatar from '../ui/core/Avatar.svelte';
-
+	import HeaderNav from '../ui/template/HeaderNav.svelte';
+	import StickyHeader from '../ui/template/StickyHeader.svelte';
+	
 
 	//base path
 	export let segment;
@@ -79,6 +81,14 @@
 	let showLeftPanel = false;
 	let showRightPanel = false;
 	let internalTheme = 'default';
+	let headerNavTransparent = false;
+	let showBurger = false;
+	let showBack = false;
+	let leftSpacer = false;
+	let rightSpacer = false;
+	let showClose = false;
+	let showLogo = false;
+	let pageTitle = false;
 
 	//solana
 	let connection;
@@ -88,12 +98,20 @@
 
 	//reactive
 	$: theme = $sApp.theme;
+	$: if ((isMounted) && ($sApp.updateActiveLayout !== activeLayout)) { //[nav,chat]
+		console.log($sApp.updateActiveLayout)
+		//console.log($sApp.updateActiveLayout,activeLayout);
+		updateDisplay($sApp.updateActiveLayout);
+	}
 	
 	//on mount set defaults
 	onMount(async() => {
 		console.info('%c[Layout][Mount]',Inf);
 
 		isMounted = true;
+		
+		const bodyWidth = document.body.offsetWidth;
+		document.documentElement.style.setProperty('--site-width', `${bodyWidth}px`);
 		
 		//setup provider url
 		providerUrl = `https://www.sollet.io/#origin=${window.location.origin}&network=${defaultNetwork.replace(/api.mainnet-beta/g,'mainnet')}`;
@@ -103,17 +121,6 @@
 		/*
 		await establishConnection(defaultNetwork).catch((err) => {
 			console.warn(`[Network Connection Error]`,err);
-		});
-		
-		//connect to wallet
-		connectWallet().then((status) => {
-			if (status){
-				console.info(`%c[Wallet Connected]`,Inf);
-			} else {
-				console.warn(`[Wallet Connection Issue]`);
-			}
-		}).catch(() => {
-			console.warn(`[Wallet Connection Error]`,err);
 		});
 		*/
 
@@ -130,6 +137,13 @@
 			scrolltarget = $sRoute.global.scrolltarget;
 			scrollBody = $sRoute.global.scrollBody;
 			displayNav = $sRoute.global.displayNav;
+			showBurger = $sRoute.global.showBurger;
+			leftSpacer = $sRoute.global.leftSpacer;
+			rightSpacer = $sRoute.global.rightSpacer;
+			showClose = $sRoute.global.showClose;
+			showBack = $sRoute.global.showBack;
+			showLogo = $sRoute.global.showLogo;
+			pageTitle = $sRoute.global.pageTitle;
 
 			//update globals based off define route vars
 			let updateCheck = value.path;
@@ -155,6 +169,13 @@
 				scrolltarget = (typeof(routeCheck.scrollTarget) !== 'undefined')?routeCheck.scrollTarget: scrolltarget;
 				scrollBody = (typeof(routeCheck.scrollBody) !== 'undefined')?routeCheck.scrollBody: scrollBody;
 				displayNav = (typeof(routeCheck.displayNav) !== 'undefined')?routeCheck.displayNav: displayNav;
+				showBurger = (typeof(routeCheck.showBurger) !== 'undefined')?routeCheck.showBurger: showBurger;
+				leftSpacer = (typeof(routeCheck.leftSpacer) !== 'undefined')?routeCheck.leftSpacer: leftSpacer;	
+				rightSpacer = (typeof(routeCheck.rightSpacer) !== 'undefined')?routeCheck.rightSpacer: rightSpacer;
+				showClose = (typeof(routeCheck.showClose) !== 'undefined')?routeCheck.showClose: showClose;
+				showBack = (typeof(routeCheck.showBack) !== 'undefined')?routeCheck.showBack: showBack;
+				showLogo = (typeof(routeCheck.showLogo) !== 'undefined')?routeCheck.showLogo: showLogo;
+				pageTitle = (typeof(routeCheck.pageTitle) !== 'undefined')?routeCheck.pageTitle: pageTitle;
 
 				if (hasTabs) {
 					const currentPath = `${window.location.pathname}${window.location.search}`;
@@ -604,60 +625,66 @@
 	 * updateDisplay
 	 **/
 	function updateDisplay(updateLayout) {
+		console.log('[updateDisplay][from]',activeLayout,'[to]',updateLayout)
 		//BUG - this is running multiple times..
-		console.log('?',updateLayout)
-		activeLayout = updateLayout;//($sRoute.activeroute === '/*')?'home':updateLayout;
-		
-		clearTimeout(maskTimer);
-		clearTimeout(blurTimer);
-
-		blur = false;
-		switch (activeLayout) {
-			case 'nav':
-				showNavMask = true;
-				opacityVal = 0.75;
-				drawerMenuPos = '0%';
-				if (langDirection === 'ltr') {
-					enableInset = false;
-					enableOutset = true;
-				} else {
-					enableInset = true;
-					enableOutset = false;
-				}
-				
-				//blurs bg mask display
-				blurTimer = setTimeout(() => {
-					blur = true;
-				}, 300);
-				break;
-			case 'chat':
-				showNavMask = true;
-				opacityVal = 0.75;
-				chatMenuPos = '0%';
-				if (langDirection === 'ltr') {
-					enableInset = true;
-					enableOutset = false;
-				} else {
-					enableInset = false;
-					enableOutset = true;
-				}
-				break;
-			//home
-			default:
-				opacityVal = 0;
-				enableInset = false;
-				enableOutset = false;
-				if (langDirection === 'ltr') {
-					chatMenuPos = '100%';
-					drawerMenuPos = '-100%';
-				} else {
-					chatMenuPos = '-100%';
-					drawerMenuPos = '100%';
-				}
-				maskTimer = setTimeout(() => {
-					showNavMask = false;
-				},300);
+		if (updateLayout !== activeLayout) {
+			console.log('[updating Display]',updateLayout)
+			activeLayout = updateLayout;//($sRoute.activeroute === '/*')?'home':updateLayout;
+			sApp.updateVal('updateActiveLayout',activeLayout);
 		}
+			clearTimeout(maskTimer);
+			clearTimeout(blurTimer);
+
+			blur = false;
+			switch (activeLayout) {
+				case 'nav':
+					showNavMask = true;
+					opacityVal = 0.75;
+					drawerMenuPos = '0%';
+					if (langDirection === 'ltr') {
+						enableInset = false;
+						enableOutset = true;
+					} else {
+						enableInset = true;
+						enableOutset = false;
+					}
+					
+					//blurs bg mask display
+					blurTimer = setTimeout(() => {
+						blur = true;
+					}, 300);
+					break;
+				case 'chat':
+					showNavMask = true;
+					opacityVal = 0.75;
+					chatMenuPos = '0%';
+					if (langDirection === 'ltr') {
+						enableInset = true;
+						enableOutset = false;
+					} else {
+						enableInset = false;
+						enableOutset = true;
+					}
+					break;
+				//home
+				default:
+					opacityVal = 0;
+					enableInset = false;
+					enableOutset = false;
+					if (langDirection === 'ltr') {
+						chatMenuPos = '100%';
+						drawerMenuPos = '-100%';
+					} else {
+						chatMenuPos = '-100%';
+						drawerMenuPos = '100%';
+					}
+					maskTimer = setTimeout(() => {
+						showNavMask = false;
+					},300);
+			}
+			
+		//}
+		
 
 	}/**
 	 * checkDirection
@@ -865,11 +892,28 @@
 	function resetToContentView(update) {
 		//updateDisplay('home');
 		const updateView = update || activeLayout;
-		if (activeLayout !== updateView) {
+		/*if (activeLayout !== updateView) {
 			updateDisplay(updateView);
-		}
+		}*/
+		sApp.updateVal('updateActiveLayout',updateView);
 	}
 
+	/**
+	 * connect
+	 **/
+	function connect() {
+		//connect to wallet
+		connectWallet().then((status) => {
+			if (status){
+				console.info(`%c[Wallet Connected]`,Inf);
+			} else {
+				console.warn(`[Wallet Connection Issue]`);
+			}
+		}).catch(() => {
+			console.warn(`[Wallet Connection Error]`,err);
+		});
+	}
+		
 </script>
 
 <style>
@@ -1098,12 +1142,12 @@
 		<link rel="manifest" href="manifestv1.json" crossorigin="use-credentials" />
 	{/if}
 	{#if theme}
-  		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="themes/core/{theme}-theme.css">
-		<link rel="stylesheet" href="themes/core/{theme}-theme.css" media="print" onload="this.media='all'">
+  		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/themes/core/{theme}-theme.css">
+		<link rel="stylesheet" href="/themes/core/{theme}-theme.css" media="all" onload="this.media='all'">
 	{/if}
 	{#if internalTheme}
-  		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="themes/internal/{internalTheme}-theme.css">
-		<link rel="stylesheet" href="themes/internal/{internalTheme}-theme.css" media="print" onload="this.media='all'">
+  		<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/themes/internal/{internalTheme}-theme.css">
+		<link rel="stylesheet" href="/themes/internal/{internalTheme}-theme.css" media="all" onload="this.media='all'">
 	{/if}
 	{#if browserThemeColor}
 		<meta name="theme-color" content="{browserThemeColor}">
@@ -1132,7 +1176,7 @@
 						<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/`); }}">
 							<Avatar size="thumbnail" profileImg="{profilePhoto}" />
 							<h1 style="margin-top:15px;">
-								Anonymous
+								Anonymous Chipmunk
 							</h1>
 						</header>
 						<div id="followingPanel" class="underlay">
@@ -1170,6 +1214,28 @@
 				<!-- class:blur="{((enableInset || enableOutset) && !(scrollHorizontal))}"-->
 				<div class="gpu_accx" class:blur="{blur}" bind:this="{navMaskEle}" id="S-mask"><div class="maskBlur" style="opacity:{opacityVal};"></div></div>
 			{/if}
+
+			<!-- Nav Header-->
+			<StickyHeader
+				headerNavTransparent="{headerNavTransparent}">
+				{#if (displayNav)}
+				<!-- Mobile HeaderBar -->
+				<HeaderNav 
+					on:nav="{() => { sApp.updateVal('updateActiveLayout','nav'); }}"
+					on:signin="{() => { connect(); }}"
+					on:goBack="{(e) => { goBack(e.detail.path) }}"
+					showBack="{showBack}"
+					showBurger="{showBurger}"
+					leftSpacer="{leftSpacer}"
+					rightSpacer="{rightSpacer}"
+					isAuthenticated="{false}" 
+					showLogo="{showLogo}"
+					pageTitle="{pageTitle}"
+					/>
+				<!-- xMobile HeaderBar -->
+				{/if}
+			</StickyHeader>
+			<!-- xNav Header-->
 
 			
 			<!-- Page Content -->
