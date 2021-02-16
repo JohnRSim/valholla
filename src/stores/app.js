@@ -13,6 +13,7 @@ const setup = {
     lockScroll: false,
     disablePullToRefresh: false,
     environment: appConfig.instance,
+    updateActiveLayout: "home",
 };
 
 /**

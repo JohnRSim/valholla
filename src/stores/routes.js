@@ -13,6 +13,13 @@ const setup = {
         scrollBody: '.scrollable',
         enableUnderlay: false,
         displayNav: true,
+        showBurger:false,
+        leftSpacer:false,
+        rightSpacer:false,
+        showClose:false,
+        showBack:false,
+        showLogo:false,
+        pageTitle:false,
     },
     path: {
         '/': {
@@ -28,6 +35,9 @@ const setup = {
         '/feed/Home': {
             scrollBody: '#S-Feed',
             scrollTarget: '.main svelte-virtual-list-viewport',
+            showBurger: true,
+            showLogo:true,
+            rightSpacer:true,
         },
     }
 };
