@@ -12,6 +12,7 @@
     "@solana/web3.js": "^0.91.3",
     "bip39": "^3.0.3",
     "borsh": "^0.3.1",
+    "buffer-layout": "^1.2.0",
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^1.0.0",
