@@ -28,6 +28,14 @@
 		dispatch(options.action, options);
     }
 	
+	/**
+	 * updateWallet
+	 **/
+	function updateWallet(walletName) {
+		activeWallet = walletName;
+		showWallets = false;
+		dispatchEvent({action:'updateWallet',name:walletName});
+	}
 </script>
 
 <style>
@@ -126,8 +134,8 @@ li.active {
 			</div>
 			<nav>
 				<ul>
-					<li class:active="{(activeWallet==='Bonfida')}" on:click="{() => { activeWallet='Bonfida';showWallets=false; }}">Bonfida</li>
-					<li class:active="{(activeWallet==='sollet.io')}" on:click="{() => { activeWallet='sollet.io';showWallets=false; }}">sollet.io</li>
+					<li class:active="{(activeWallet==='Bonfida')}" on:click="{() => { updateWallet('Bonfida'); }}">Bonfida</li>
+					<li class:active="{(activeWallet==='sollet.io')}" on:click="{() => { updateWallet('sollet.io'); }}">sollet.io</li>
 				</ul>
 			</nav>
 		</div>
