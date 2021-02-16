@@ -39,10 +39,10 @@ fn entry(
 		let account = next_account_info(accounts_iter)?;
 
 		// The data must be large enough to hold a u64 count
-		//if account.try_data_len()? < mem::size_of::<u32>() {
-		//	info!("Greeted account data length too small for u32");
-		//	return Err(ProgramError::InvalidAccountData);
-		//}
+		if account.try_data_len()? < mem::size_of::<u32>() {
+			info!("Greeted account data length too small for u32");
+			return Err(ProgramError::InvalidAccountData);
+		}
 
 		// Increment and store the number of times the account has been greeted
 		
