@@ -38,7 +38,7 @@ const loadProgram = async () => {
 	const appPubkey = appAccount.publicKey;
 	console.log('Creating app account', appPubkey.toBase58());
 	const space = dataLayout.span;
-	const lamports = 1000000000;
+	const lamports = 10000000000;
 	console.log(`Lamports required ${lamports}`);
 	const transaction = new solanaWeb3.Transaction().add(
 		solanaWeb3.SystemProgram.createAccount({
@@ -101,7 +101,7 @@ const deploy = async () => {
 	console.log('Connection to cluster established:', version);
 	await checkPayer();
 	const app = await loadProgram();
-	console.log('appAccount',app.appAccount.publicKey.toBase58());
+	console.log('app',app);
 	console.log('Sleeping for 20 seconds to let the blockchain catch up');
 	await new Promise(r => setTimeout(r, 20000));
 	console.log('Testing data push to Solana blockchain');
@@ -110,5 +110,8 @@ const deploy = async () => {
 	await new Promise(r => setTimeout(r, 20000));
 	console.log('Testing data pull from Solana blockchain');
 	await pullData(app);
+	await new Promise(r => setTimeout(r, 20000));
+	console.log('Testing data push to Solana blockchain');
+	await pushData(app);
 }
 deploy();

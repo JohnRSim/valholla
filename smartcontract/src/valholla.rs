@@ -9,7 +9,6 @@ use solana_program::{
 };
 use borsh::{BorshDeserialize, BorshSerialize};
 use std::mem;
-use std::str::from_utf8;
 
 pub trait Serdes: Sized + BorshSerialize + BorshDeserialize {
 	fn pack(&self, dst: &mut [u8]) {
@@ -40,16 +39,23 @@ fn entry(
 
 	let mut data = account.try_borrow_mut_data()?;
 	let mut unpacked = Message::unpack(&data).expect("Failed to read data");
-	msg!("unpacked ${:?}",unpacked);
+	//msg!("unpacked ${:?}",unpacked);
 
-	let mut memo = from_utf8(instruction_data).map_err(|err| {
-			msg!("Invalid UTF-8, from byte {}", err.valid_up_to());
+	let mut memo = String::from_utf8(instruction_data.to_vec()).map_err(|err| {
+			msg!("Invalid UTF-8, from byte {}");
 			ProgramError::InvalidInstructionData
 	})?;
-	msg!("Memo (len {})", memo.len());
+	//msg!("Memo (len {})", memo.to_string().len());
 
 	// line needed here to add memo to unpacked data
-	
+	//unpacked.txt = memo.to_string();
+	let mut iter = memo.chars();
+	//iter.by_ref().nth(4);
+	let mut slice = iter.as_str();
+	let mut txtFinal = String::from(slice);
+	txtFinal.truncate(996);
+	unpacked.txt = txtFinal;
+
 	unpacked.pack(&mut data);
 	Ok(())
 }
