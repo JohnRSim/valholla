@@ -44,15 +44,15 @@
   /*Core*/
   --bg-feedWrap:#fff;
   --bg-corePage:#fafafa;
-  --bg-baseWrap:#140F26;
-  --bg-stickyHeader:#000;
+  --bg-baseWrap:#161b19;
+  --bg-stickyHeader:#1e2423;
   --bg-socialHeader:#fff;
   --bg-siteHeader:#fff;
   --color-siteHeader-centralLinks:#000;
   --hover-base-color:#d40511;
   /*Header*/
   --color-headerTitle:#fff;
-  --maskColor-ico:#fff;
+  --maskColor-ico:#698582;
   --img-icon-chat:url("/img/ico_chat.svg");
   --img-icon-back:url("/img/ico_back.svg");
   --bg-icon-back:#fff;
