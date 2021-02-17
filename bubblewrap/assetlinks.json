@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "com.valholla.twa",
+                   "sha256_cert_fingerprints": ["32:B1:EB:44:84:A0:3A:44:EF:B8:BB:42:28:C9:12:0E:BA:38:9C:40:C3:DB:FF:57:CA:DB:21:E6:FF:AC:AF:C1"] }
+    }]

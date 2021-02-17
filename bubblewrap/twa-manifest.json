@@ -1,0 +1,75 @@
+{
+  "packageId": "com.valholla.twa",
+  "host": "www.val-holla.com",
+  "name": "Val-hölla",
+  "launcherName": "Val-hölla",
+  "display": "standalone",
+  "themeColor": "#161B19",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#000000",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://www.val-holla.com/maskable_icon-512.png",
+  "maskableIconUrl": "https://www.val-holla.com/maskable_icon-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "c:\\work\\androiid\\keystore.jks",
+    "alias": "Smartr"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Home",
+      "shortName": "Home",
+      "url": "https://www.val-holla.com/feed/Home",
+      "chosenIconUrl": "https://www.val-holla.com/icons/home.png"
+    },
+    {
+      "name": "Apps",
+      "shortName": "Apps",
+      "url": "https://www.val-holla.com/feed/Apps",
+      "chosenIconUrl": "https://www.val-holla.com/icons/gmp.png"
+    },
+    {
+      "name": "User Settings",
+      "shortName": "Settings",
+      "url": "https://www.val-holla.com/settings",
+      "chosenIconUrl": "https://www.val-holla.com/icons/settings.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://www.val-holla.com/manifestv1.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "shareTarget": {
+    "action": "https://www.val-holla.com/_share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "link",
+      "files": [
+        {
+          "name": "media",
+          "accept": [
+            "audio/*",
+            "image/*",
+            "video/*"
+          ]
+        }
+      ]
+    }
+  },
+  "orientation": "default",
+  "appVersion": "1"
+}
