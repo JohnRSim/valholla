@@ -127,6 +127,61 @@
 			console.warn(`[Network Connection Error]`,err);
 		});
 		*/
+		
+		//store event to trgger if user wants to install as a pwa
+		//button available in user settings page
+		window.addEventListener('beforeinstallprompt', (event) => {
+			console.log('👍', '[[PWA - beforeinstallprompt]]', event);
+			// Stash the event so it can be triggered later.
+			window.deferredPrompt = event;
+		});
+
+		//check manifest if related app installed
+		//check if browser version supports the api
+		if (window.self === window.top) {
+			if ('getInstalledRelatedApps' in window.navigator) {
+				const relatedApps = await navigator.getInstalledRelatedApps();
+				relatedApps.forEach((app) => {
+					//if your PWA exists in the array it is installed
+					console.log('[[App Found]]',app.platform, app.url);
+					if (app.platform === 'webapp') {
+						window.deferredPrompt = null;
+					}
+				});
+			}
+		}
+
+		//checks if service worker updated
+		//if updated show option to load new SW. 
+		if ('serviceWorker' in navigator) {
+			const wb = new Workbox('/service-worker.js');
+			let registration;
+
+			const showSkipWaitingPrompt = (event) => {
+				
+				//todo add modal display
+				
+				wb.addEventListener('controlling', (event) => {
+					window.location.reload();
+				});
+
+				if (registration && registration.waiting) {
+					// Send a message to the waiting service worker,
+					// instructing it to activate.  
+					// Note: for this to work, you have to add a message
+					// listener in your service worker. See below.
+					messageSW(registration.waiting, {type: 'SKIP_WAITING'});
+				}
+			};
+
+			// Add an event listener to detect when the registered
+			// service worker has installed but is waiting to activate.
+			wb.addEventListener('waiting', showSkipWaitingPrompt);
+			wb.addEventListener('externalwaiting', showSkipWaitingPrompt);
+
+			wb.register().then((r) => registration = r);
+		}
+
 
 		//subscribe to page loads
 		page.subscribe(async(value) => {
