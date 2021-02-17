@@ -1,6 +1,5 @@
 
 const solanaWeb3 = require('@solana/web3.js');
-const BufferLayout = require('buffer-layout');
 const connection = new solanaWeb3.Connection('https://testnet.solana.com');
 
 // John this is the private key of the person paying the transaction. We probably need to use Sollet.io to sort this.
@@ -10,7 +9,6 @@ const payerAccount = new solanaWeb3.Account([1,185,72,49,215,81,171,50,85,54,122
 // Smart Contract Details
 const programId = new solanaWeb3.PublicKey(`BTPACSiAUgkMV8WmrRn57gSZGjC4Nfe95ECPQFtrDkbL`);
 const appPubKey = new solanaWeb3.PublicKey(`3hRYDsk1UkjztabWnhx5U9FipQteJ1zRtgojy23V7ztQ`);
-const dataLayout = BufferLayout.struct([ BufferLayout.blob(1000,'txt') ]);
 
 const pushJSON = async (jsonString) => {
 	if (jsonString.length > 996) throw new Error({'e':'jsonString length greater than 996 chars'});
@@ -35,9 +33,7 @@ const pushJSON = async (jsonString) => {
 
 const pullJSON = async () => {
 	const accountInfo = await connection.getAccountInfo(appPubKey);
-	const info = dataLayout.decode(Buffer.from(accountInfo.data));
-	const json = info.txt.toString().substr(4,1000).trim();
-	return json;
+	return Buffer.from(accountInfo.data).toString().substr(4,1000).trim();
 }
 
 const demo = async () => {
