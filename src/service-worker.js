@@ -5,7 +5,7 @@ import { CacheOnly, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies'
 import { ExpirationPlugin } from 'workbox-expiration';
 import { RangeRequestsPlugin } from 'workbox-range-requests';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
-import { cacheName, channelName, urlPrefix } from './js/constants';
+import { cacheName, channelName, urlPrefix } from './utils/constants';
 
 //cleanup old items in cache
 cleanupOutdatedCaches();
