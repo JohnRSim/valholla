@@ -45,6 +45,7 @@
 
 	img {
 		/*opacity: 0.6;*/
+    	margin: 0px auto;
 	}
 
 	footer {
