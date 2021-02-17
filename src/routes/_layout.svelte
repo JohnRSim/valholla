@@ -61,7 +61,7 @@
 	//defaults
 	let isMounted = false;
 	let profilePhoto = '/img/profile-option1.svg';
-	let browserThemeColor = '#140F26';
+	let browserThemeColor = '#161b19';
 	let isIOS = false;
 	
 
@@ -90,6 +90,9 @@
 	let showLogo = false;
 	let pageTitle = false;
 
+	//wallet
+	let walletDomain = 'www.bonfida.com/wallet';//'www.sollet.io';
+
 	//solana
 	let connection;
 	let defaultNetwork = 'testnet'; //[testnet,api.mainnet-beta,localhost]
@@ -104,6 +107,7 @@
 		updateDisplay($sApp.updateActiveLayout);
 	}
 	
+	
 	//on mount set defaults
 	onMount(async() => {
 		console.info('%c[Layout][Mount]',Inf);
@@ -114,7 +118,7 @@
 		document.documentElement.style.setProperty('--site-width', `${bodyWidth}px`);
 		
 		//setup provider url
-		providerUrl = `https://www.sollet.io/#origin=${window.location.origin}&network=${defaultNetwork.replace(/api.mainnet-beta/g,'mainnet')}`;
+		providerUrl = `https://${walletDomain}/#origin=${window.location.origin}&network=${defaultNetwork.replace(/api.mainnet-beta/g,'mainnet')}`;
 		console.log(providerUrl)
 		
 		//connect to network
@@ -914,6 +918,20 @@
 		});
 	}
 		
+	/**
+	 * updateWalletDomain
+	 **/
+	function updateWalletDomain(wallet) {
+		switch (wallet) {
+			case 'Bonfida':
+				walletDomain = 'www.bonfida.com/wallet';
+				break;
+			case 'sollet.io':
+				walletDomain = 'sollet.io';
+				break;
+		}
+		providerUrl = `https://${walletDomain}/#origin=${window.location.origin}&network=${defaultNetwork.replace(/api.mainnet-beta/g,'mainnet')}`;
+	}
 </script>
 
 <style>
@@ -988,6 +1006,8 @@
 		color:#323232;
 		display: flex;
 		flex-direction: column;
+		border-radius:0px 10px 0px 0px;
+		overflow:hidden;
 	}
 
 	#S-navPanel header {
@@ -1224,6 +1244,7 @@
 					on:nav="{() => { sApp.updateVal('updateActiveLayout','nav'); }}"
 					on:signin="{() => { connect(); }}"
 					on:goBack="{(e) => { goBack(e.detail.path) }}"
+					on:updateWallet="{(e) => { updateWalletDomain(e.detail.name); }}"
 					showBack="{showBack}"
 					showBurger="{showBurger}"
 					leftSpacer="{leftSpacer}"
