@@ -309,5 +309,6 @@
 {#if (!isAuthenticated)}
 <HeaderLogin 
   on:signin="{() => { dispatchEvent({action:'signin'}); }}"
+  on:updateWallet="{(e) => { dispatchEvent(e.detail); }}"
   />
 {/if}
