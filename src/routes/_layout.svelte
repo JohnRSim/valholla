@@ -29,6 +29,9 @@
 	//utils
 	import { navTo, goBack } from './route.js';
 	
+	//workbox
+	import { Workbox, messageSW } from 'workbox-window';
+	
 	//machine learning sentament analysis
 	//import * as toxicity from '@tensorflow-models/toxicity';
 	//import '@tensorflow/tfjs-backend-webgl';
