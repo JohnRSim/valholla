@@ -29,7 +29,7 @@ Open www.val-holla.com in a PWA compatible browser.
 
 ## Chrome (recommended) / Brave
 
-Once you open the page the browser will open a banner at the bottom of the page that says "Add Journalistic to Home screen". Click on it and you're ready to go.
+Once you open the page the browser will open a banner at the bottom of the page that says "Add Val-hölla to Home screen". Click on it and you're ready to go.
 
 If the banner does not appear click on the menu icon and in the menu "Add to Home screen". That's it, open the app via the app icon.
 
