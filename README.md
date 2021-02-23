@@ -18,6 +18,7 @@ www.val-holla.com
   <br>
   <br>
 </p>
+
 # Install app
 
 Val-hölla is a progressive Web APp, the next generation of mobile applications. Once installed you won't feel a difference to a native Android or iOS app, only that you never need to update it.
