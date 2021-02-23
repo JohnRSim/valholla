@@ -12,6 +12,13 @@
 The perfect place to chat, invest and expand the Solana ecosystem.<br />
 www.val-holla.com
 
+<p align="center">
+  <a href="./static/hackThePlanet.png"><img width="100%" src="./static/hackThePlanet_tn.png" alt="Valholla hackathon"></a>
+  
+  <br>
+  <br>
+</p>
+
 # Install app
 
 Val-hölla is a progressive Web APp, the next generation of mobile applications. Once installed you won't feel a difference to a native Android or iOS app, only that you never need to update it.
