@@ -57,7 +57,8 @@
   export let isAuthenticated = false;
   export let showSearch = false;
   export let activeroute = false;
-  export let showLogin = false;
+  export let showConnectToWallet = false;
+  export let showWallet = false;
 
   let oldRoute = '';
   $: if (activeroute) {
@@ -166,6 +167,16 @@
   }
   .close {
     padding: 12px 15px;
+  }
+  .wallet {
+    
+    padding: 12px 15px;
+  }
+  .wallet .ico {
+    -webkit-mask-image: url("/img/ico_shield-outline.svg");
+    width:36px;
+    height:100%;
+    -webkit-mask-size: 24px;
   }
 
   :global(.trigger-menu-wrapperx.transparent .library .ico, .trigger-menu-wrapperx.transparent .report .ico) {
@@ -301,13 +312,18 @@
     <i class="ico "></i>
   </li>
   {/if}
+  {#if (showWallet)}
+  <li class="wallet"on:click="{() => { dispatchEvent({action:'wallet'}); }}">
+    <i class="ico "></i>
+  </li>
+  {/if}
   {#if (rightSpacer)}
   <li class="spacer"></li>
   {/if}
   <!-- xRight -->
 </ul>
 
-{#if ((!isAuthenticated) && (showLogin))}
+{#if ((!isAuthenticated) && (showConnectToWallet))}
 <HeaderLogin 
   on:signin="{() => { dispatchEvent({action:'signin'}); }}"
   on:updateWallet="{(e) => { dispatchEvent(e.detail); }}"

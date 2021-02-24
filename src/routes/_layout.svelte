@@ -92,6 +92,19 @@
 	let showClose = false;
 	let showLogo = false;
 	let pageTitle = false;
+	let showWallet = false;
+	let showConnectToWallet = false;
+	let footer = [];
+	let inlineHeaderNav = false;
+	let inlineDoubleHeaderNav = false;
+	let inlineDoubleHeaderLargeNav = false;
+
+	//navbar height defaults
+	let headerSpace_small = 38;
+	let headerSpace_normal = 60;
+	let navBarHeight = 60;
+	let headerSpace_medium = 98;
+	let headerSpace_large = 120;
 
 	//wallet
 	let walletDomain = 'www.bonfida.com/wallet';//'www.sollet.io';
@@ -206,7 +219,13 @@
 			showBack = $sRoute.global.showBack;
 			showLogo = $sRoute.global.showLogo;
 			pageTitle = $sRoute.global.pageTitle;
-
+			showWallet = $sRoute.global.showWallet;
+			showConnectToWallet = $sRoute.global.showConnectToWallet;
+			footer = $sRoute.global.footer;
+			inlineHeaderNav = $sRoute.global.inlineHeaderNav;
+			inlineDoubleHeaderNav = $sRoute.global.inlineDoubleHeaderNav;
+			inlineDoubleHeaderLargeNav = $sRoute.global.inlineDoubleHeaderLargeNav;
+			
 			//update globals based off define route vars
 			let updateCheck = value.path;
 			routeCheck = $sRoute.path[`${updateCheck}`];
@@ -238,7 +257,13 @@
 				showBack = (typeof(routeCheck.showBack) !== 'undefined')?routeCheck.showBack: showBack;
 				showLogo = (typeof(routeCheck.showLogo) !== 'undefined')?routeCheck.showLogo: showLogo;
 				pageTitle = (typeof(routeCheck.pageTitle) !== 'undefined')?routeCheck.pageTitle: pageTitle;
-
+				showWallet = (typeof(routeCheck.showWallet) !== 'undefined')?routeCheck.showWallet: showWallet;
+				showConnectToWallet = (typeof(routeCheck.showConnectToWallet) !== 'undefined')?routeCheck.showConnectToWallet: showConnectToWallet;
+				footer = (typeof(routeCheck.footer) !== 'undefined')?routeCheck.footer: footer;
+				inlineHeaderNav = (typeof(routeCheck.inlineHeaderNav) !== 'undefined')?routeCheck.inlineHeaderNav: inlineHeaderNav;
+				inlineDoubleHeaderNav = (typeof(routeCheck.inlineDoubleHeaderNav) !== 'undefined')?routeCheck.inlineDoubleHeaderNav: inlineDoubleHeaderNav;
+				inlineDoubleHeaderLargeNav = (typeof(routeCheck.inlineDoubleHeaderLargeNav) !== 'undefined')?routeCheck.inlineDoubleHeaderLargeNav: inlineDoubleHeaderLargeNav;
+				
 				if (hasTabs) {
 					const currentPath = `${window.location.pathname}${window.location.search}`;
 					let tabPos = 0;
@@ -256,6 +281,17 @@
 					}
 				}
 			}
+
+			//wait for DOM
+			await tick();
+			
+			//console.log('xxx',scrolltarget);
+			if (typeof(scrolltarget) !== 'object') {
+				scrolltarget = document.querySelector(scrolltarget);
+			}
+			scrollBody = document.querySelector(scrollBody);
+			scrolltarget.addEventListener('scroll',verticalScroll);
+			
 		});
 	});
 
@@ -746,9 +782,188 @@
 			}
 			
 		//}
+	}
+	
+	
+	
+	let priorScrollPos = 0;
+	let newNavBarHeight = 0;
+	let heightDif = 0;
+	let navYPos = 0;
+	let originalScrollPos = 0;
+	let scrollDirection = 'down';
+	let initVerticalDirectionSet = false;
+	let contentYPos = 0;
+	let detectUserScrollTimer;
+	let scrollTimer;
+	/**
+	 * verticalScroll
+	 **/
+	function verticalScroll(e) {
 		
+		if (scrollHorizontal) {
+			return;
+		}
 
-	}/**
+		//helps to improve performance and disable animated transitions during scroll.
+		clearTimeout(detectUserScrollTimer);
+		if (!$sApp.userScrolling) {
+			sApp.updateVal('userScrolling',true);
+		}
+		detectUserScrollTimer = setTimeout(() => {
+			sApp.updateVal('userScrolling',false);
+		},66);
+
+		if (displayNav) {
+			clearTimeout(scrollTimer);
+			let activeHeader = document.querySelector('header.trigger-menu-wrapperx');
+			//console.log(initVerticalDirectionSet);
+			//has initialdirection been set if not get direction
+			if (!initVerticalDirectionSet) {
+				//console.log(priorScrollPos);
+				//console.log('init',Math.round(scrollable.scrollTop));
+				priorScrollPos = Math.round(scrolltarget.scrollTop);
+				originalScrollPos = Math.round(scrolltarget.scrollTop);
+				const headerTransformStyle = activeHeader.style.transform.split(/\w+\(|\);?/);
+				if (headerTransformStyle[1]) {
+					const transformStyle = headerTransformStyle[1].split(/,\s?/g).map(numStr => parseInt(numStr));
+					newNavBarHeight = transformStyle[1];
+					navYPos = transformStyle[1];
+				}
+				if (document.body.classList.contains('endScroll')) {
+					if (document.body.classList.contains('scroll-up')) {
+						//console.log('scrollup start');
+						newNavBarHeight = 0;
+						navYPos = 0;
+					}
+					if (document.body.classList.contains('scroll-down')) {
+						//console.log('scrolldown start');
+						newNavBarHeight = navBarHeight;
+						navYPos = -navBarHeight;
+					}
+				}
+				//reset height dif
+				heightDif = navYPos;
+				initVerticalDirectionSet = true;
+				scrollVertical = true;
+			}
+
+			if (scrollVertical) {
+				let currentScrollPost = Math.round(scrolltarget.scrollTop);
+				//console.log(currentScrollPost - priorScrollPos);
+				if ((currentScrollPost - priorScrollPos) > 0) {
+					//console.log('down',scrollDirection);
+					//change direction
+					if (scrollDirection === 'up') {
+						scrollDirection = 'down';
+						originalScrollPos = Math.round(scrolltarget.scrollTop);
+						newNavBarHeight = navYPos;
+					}
+					let calc = originalScrollPos - currentScrollPost;
+					if (navYPos === -navBarHeight) {
+						heightDif = -navBarHeight;
+					} else {
+						heightDif = ((calc+newNavBarHeight) <= -navBarHeight)?-navBarHeight:(calc+newNavBarHeight);
+					}
+
+				} else if((currentScrollPost - priorScrollPos) < 0) {
+					//console.log('up',scrollDirection);
+					//change direction
+					if (scrollDirection === 'down') {
+						scrollDirection = 'up';
+						originalScrollPos = Math.round(scrolltarget.scrollTop);
+						newNavBarHeight = navYPos;
+					}
+
+					let calc = originalScrollPos - currentScrollPost;
+					heightDif = ((calc+newNavBarHeight) >= 0)?0:(calc+newNavBarHeight);
+					
+				}
+
+				//calculate offset
+				navYPos = heightDif;
+
+				//update offset header
+				activeHeader.style.transform = `translate3d(0, ${navYPos}px, 0)`;
+				if (inlineHeaderNav) {
+					//contentYPos = navYPos + navBarHeight;
+					contentYPos = ((headerSpace_normal - currentScrollPost) <= 0)?0:(headerSpace_normal - currentScrollPost);
+				}
+				if (inlineDoubleHeaderNav) {
+					if (scrollDirection === 'up') {
+						contentYPos = ((headerSpace_medium - currentScrollPost) <= headerSpace_small)?headerSpace_small:(headerSpace_medium - currentScrollPost);
+					}
+					
+					if (scrollDirection === 'down') {
+						contentYPos = ((headerSpace_medium - currentScrollPost) <= headerSpace_small)?headerSpace_small:(headerSpace_medium - currentScrollPost);
+					}
+				}
+				if (inlineDoubleHeaderLargeNav) {
+					if (scrollDirection === 'up') {
+						contentYPos = ((headerSpace_large - currentScrollPost) <= headerSpace_normal)?headerSpace_normal:(headerSpace_large - currentScrollPost);
+					}
+					
+					if (scrollDirection === 'down') {
+						contentYPos = ((headerSpace_large - currentScrollPost) <= headerSpace_normal)?headerSpace_normal:(headerSpace_large - currentScrollPost);
+					}
+				}
+				if ((headerNavTransparent) && (!inlineHeaderNav)) {
+					contentYPos = 0;
+				}
+				
+				scrollBody.style.transform = `translate3d(0, ${contentYPos}px, 0)`;
+
+				//grab prior scroll to calculate direction
+				priorScrollPos = Math.round(scrolltarget.scrollTop);
+
+				//remove end scroll settings during scroll
+				document.body.classList.remove('scroll-down');
+				document.body.classList.remove('scroll-up');
+				document.body.classList.remove('endScroll');
+
+				if (currentScrollPost === 0) {
+					document.body.classList.remove('shadow');
+				} else {
+					document.body.classList.add('shadow');
+				}
+
+				//user actively scrolling
+				document.body.classList.add('userScroll');
+
+				scrollTimer = setTimeout(() => {
+					document.body.classList.remove('userScroll');
+					document.body.classList.add('endScroll');
+					if ((scrolltarget) && (scrolltarget.scrollTop < navBarHeight)) {
+						//user finished scrolling
+						document.body.classList.add('scroll-up');
+						navYPos = 0;
+						newNavBarHeight = 0;
+						activeHeader.style.transform = `translate3d(0, ${navYPos}px, 0)`;
+						//scrolltarget.style.transform = `translate3d(0, ${contentYPos}px, 0)`;
+					} else {
+						//finish sroll position update
+						if (scrollDirection === 'up') {
+							document.body.classList.add('scroll-up');
+							navYPos = 0;
+							newNavBarHeight = 0;
+							activeHeader.style.transform = `translate3d(0, ${navYPos}px, 0)`;
+							//scrolltarget.style.transform = `translate3d(0, ${contentYPos}px, 0)`;
+						} else {
+							document.body.classList.add('scroll-down');
+							navYPos = -navBarHeight;
+							newNavBarHeight = -navBarHeight;
+							activeHeader.style.transform = `translate3d(0, ${navYPos}px, 0)`;
+							//scrolltarget.style.transform = `translate3d(0, ${contentYPos}px, 0)`;
+						}
+					}
+					//reset scroll
+					initVerticalDirectionSet = false;
+				},600);
+			}
+		}
+	}
+
+	/**
 	 * checkDirection
 	 **/
 	function checkScrollDirection(e) {
@@ -1367,7 +1582,7 @@
 					<div id="S-navPanel">
 						<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/`); }}">
 							<Avatar size="thumbnail" profileImg="{profilePhoto}" />
-							<h1 style="margin-top:15px; display:flex;">
+							<h1 on:click|stopPropagation="{() => { resetToContentView('home'); navTo('/wallet');}}" style="margin-top:15px; display:flex;">
 								<div>
 									<span class="anon creature">
 										<span class="ico"></span>
@@ -1472,6 +1687,7 @@
 					on:signin="{() => { connect(); }}"
 					on:goBack="{(e) => { goBack(e.detail.path) }}"
 					on:updateWallet="{(e) => { updateWalletDomain(e.detail.name); }}"
+					on:wallet="{(e) => { navTo('/wallet'); }}"
 					showBack="{showBack}"
 					showBurger="{showBurger}"
 					leftSpacer="{leftSpacer}"
@@ -1479,6 +1695,8 @@
 					isAuthenticated="{false}" 
 					showLogo="{showLogo}"
 					pageTitle="{pageTitle}"
+					showConnectToWallet="{showConnectToWallet}"
+					showWallet="{showWallet}"
 					/>
 				<!-- xMobile HeaderBar -->
 				{/if}

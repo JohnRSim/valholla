@@ -20,6 +20,9 @@ const setup = {
         showBack:false,
         showLogo:false,
         pageTitle:false,
+        showWallet:false,
+        showConnectToWallet:false,
+        footer:[],
     },
     path: {
         '/': {
@@ -27,17 +30,36 @@ const setup = {
             scrollBody: '#S-Auth',
             displayNav: false,
         },
-        '/login/*': {
+        '/wallet': {
             scrollTarget: '#S-Auth.scrollable',
             scrollBody: '#S-Auth',
-            displayNav: false,
+            displayNav: true,
+            showBurger: true,
+            showLogo:true,
+            showWallet:true,
+            showConnectToWallet:true,
         },
         '/home': {
             scrollTarget: '#S-Auth.scrollable',
             scrollBody: '#S-Auth',
             showBurger: true,
             showLogo:true,
-            rightSpacer:true,
+            showWallet:true,
+            footer:[{
+                classes: 'home',
+                name: 'Home',
+                active: true,
+            },{
+                classes: 'updates',
+                name: 'Updates',
+                active: false,
+                path: `/`,
+            },{
+                classes: 'projects',
+                name: 'Projects',
+                active: false,
+                path: `/`,
+            }],
         },
         '/about': {
             scrollTarget: '#S-Auth.scrollable',
