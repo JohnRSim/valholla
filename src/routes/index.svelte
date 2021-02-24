@@ -114,7 +114,7 @@
 
 {#if (isMounted)}
 <section class="overview">
-	<h1 on:click="{() => { navTo('/feed/Home'); }}">
+	<h1 on:click="{() => { navTo('/home'); }}">
 		<span>Val-hölla</span>
 		<img src="/img/logo_valholla.png" width="220" height="140" alt="Val-holla "/>
 	</h1>
