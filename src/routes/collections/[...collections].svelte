@@ -24,6 +24,9 @@
 	//import { send, receive } from '../../transition/crossfade';
 	import { fade } from 'svelte/transition';
 	
+    //components
+    import Projects from '../../ui/components/cards/Projects.svelte';
+
 	//Nav
 	export let collections = 'Home';
 	export let tab = '';
@@ -48,6 +51,9 @@
 
 <style>
 
+	footer.spacer {
+		min-height:60px;
+	}
 </style>
 
 <svelte:head>
@@ -55,7 +61,17 @@
 </svelte:head>
 
 {#if (isMounted)}
-<section>
-	Hello World..
-</section>
+<div class="profile scrollable gpu_acc" id="V-Collections" style="transform: translate3d(0px, 60px, 0px);">
+	<div dir="auto" style="width:100%">
+		<section style="padding:0px 20px 40px 20px;">
+
+			<Projects />
+			<Projects />
+			<Projects />
+			<Projects />
+
+			<footer class="spacer"></footer>
+		</section>
+	</div>
+</div>
 {/if}
