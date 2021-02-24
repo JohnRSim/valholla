@@ -76,6 +76,11 @@
 		width:47%;
 		margin:10px 0px;
 	}
+
+	.tvl-chart {
+		max-width: 100%;
+		border-radius: 5px;
+	}
 </style>
 
 <svelte:head>
@@ -103,31 +108,33 @@
 				</footer>
 			</article>
 
-			<!-- Jim Add your magic -->
 			<article class="card" style="margin-bottom:10px;">
-			... Return me to Ragnarok!!! arghh..
-			Chart goes here...
+				<img src="/static/img/solana-tvl.png" alt="Solana Total Value Locked" class="tvl-chart" />
 			</article>
 
 			<section class="grid">
 			
 				<article class="card">
-				1 ???
+				SOL: $5.23
 				</article>
 				<article class="card">
-				2 ???
+				SRM: 4.32
 				</article>
 				<article class="card">
-				3 ???
+				FIDA: $1.34
 				</article>
 				<article class="card">
-				4 ???
+				RAY: $3.10
 				</article>
 			</section>
 
-			<article class="card">
-			Table list of projects?..
+			<article class="card" style="margin-bottom:10px;">
+				<h5>NEWS</h5>
+				<p>FTX Announces Oxygen IEO</p>
+				<p>Solana Hackathon Nears Completion</p>
+				<p>Eth2.0 | The BSC Killer?</p>
 			</article>
+
 		</section>
 	</div>
 </div>
