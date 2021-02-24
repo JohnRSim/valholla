@@ -43,7 +43,8 @@
 	import Avatar from '../ui/core/Avatar.svelte';
 	import HeaderNav from '../ui/template/HeaderNav.svelte';
 	import StickyHeader from '../ui/template/StickyHeader.svelte';
-	
+	import FooterNavigation from '../ui/template/FooterNavigation.svelte';
+
 
 	//base path
 	export let segment;
@@ -1714,6 +1715,20 @@
 				</main>
 			</div>
 			<!-- xPage Content -->
+			
+			<!-- Footer -->
+			{#if (footer.length > 0)}
+			<footer>
+				<FooterNavigation 
+					footerNavItems="{footer}"
+					on:selectLink="{(e) => {
+						navTo(`${e.detail.name}`); 
+						document.body.classList.remove('scroll-down');
+						document.body.classList.remove('shadow');
+						document.body.classList.add('scroll-up');
+					}}" />
+			</footer>
+			{/if}
 		</div>
 
 	</div>
