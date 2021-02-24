@@ -1287,7 +1287,24 @@
 		background-image: url("/img/ico_bulb-outline.svg");
 	}
 
+	.anon.creature {
+		width:40px;
+		height:40px;
+		border-radius: 6px;
+		background-color:#D20150;
+		display: block;
+	}
 	
+	.anon.creature .ico {
+		background-color:#fff;
+		-webkit-mask-image: url("/img/ico_hippo-solid.svg");
+		-webkit-mask-repeat: no-repeat;
+   		-webkit-mask-position: center;
+		-webkit-mask-size: 26px;
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
 </style>
 
 <svelte:head>
@@ -1330,9 +1347,16 @@
 					<div id="S-navPanel">
 						<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/`); }}">
 							<Avatar size="thumbnail" profileImg="{profilePhoto}" />
-							<h1 style="margin-top:15px;">
-								<span class="ico anon"></span>
-								<span>Anonymous Hippo</span>
+							<h1 style="margin-top:15px; display:flex;">
+								<div>
+									<span class="anon creature">
+										<span class="ico"></span>
+									</span>
+								</div>
+								<div style="align-items: center; display: flex; padding-left:10px;">
+    
+									<span>Anonymous Hippo</span>
+								</div>
 							</h1>
 						</header>
 						<!--
