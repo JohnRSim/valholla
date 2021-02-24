@@ -81,7 +81,7 @@ const setup = {
             showLogo:true,
             rightSpacer:true,
         },
-        '/feed/Actvity': {
+        '/feed/*': {
             scrollBody: '#S-Feed',
             scrollTarget: '.main svelte-virtual-list-viewport',
             showBurger: true,
