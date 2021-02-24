@@ -1394,30 +1394,30 @@
 								<li class="navSection">
 									<h4>Updates</h4>
 									<ul>
-										<li class="ico leader" on:click="{() => { resetToContentView('home'); navTo('/feed/Home'); }}">Leader board</li>
-										<li class="ico activity" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Activity</li>
+										<li class="ico leader" on:click="{() => { resetToContentView('home'); navTo('/leaderboard'); }}">Leader board</li>
+										<li class="ico activity" on:click="{() => { resetToContentView('home'); navTo('/feed/Activity'); }}">Activity</li>
 								
 									</ul>
 								</li>
 								<li class="navSection">
 									<h4>Collections</h4>
 									<ul>
-										<li class="ico project" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Projects We Love</li>
-										<li class="ico grants" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Grants Provided</li>
-										<li class="ico new" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Newly Listed</li>
+										<li class="ico project" on:click="{() => { resetToContentView('home'); navTo('/collections/projects'); }}">Projects We Love</li>
+										<li class="ico grants" on:click="{() => { resetToContentView('home'); navTo('/collections/grants'); }}">Grants Provided</li>
+										<li class="ico new" on:click="{() => { resetToContentView('home'); navTo('/collections/new'); }}">Newly Listed</li>
 									</ul>
 								</li>
 								<li class="navSection">
 									<h4>Kickstart</h4>
 									<ul>
-										<li class="ico setup" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Setup new project</li>
-										<li class="ico apply" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Apply for grant</li>
+										<li class="ico setup" on:click="{() => { resetToContentView('home'); navTo('/kickstart/new'); }}">Setup new project</li>
+										<li class="ico apply" on:click="{() => { resetToContentView('home'); navTo('/kickstart/grant'); }}">Apply for grant</li>
 									</ul>
 								</li>
 								<li class="navSection">
 									<h4>Val-hölla</h4>
 									<ul>
-										<li class="ico about" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">About</li>
+										<li class="ico about" on:click="{() => { resetToContentView('home'); navTo('/about'); }}">About</li>
 								
 									</ul>
 								</li>
@@ -1427,7 +1427,7 @@
 						<footer>
 							<nav>
 								<ul>
-									<li class="debug">
+									<li class="debug"on:click="{() => { resetToContentView('home'); navTo('/debug'); }}">
 										<span class="ico bug"></span>
 										<span style="flex:1;">DEBUG</span>
 									</li>
