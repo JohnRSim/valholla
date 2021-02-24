@@ -1048,6 +1048,8 @@
 		right:0px;
 		z-index: 20;
 		background:#303841;
+		display:flex;
+		flex-direction:column
 	}
 
 	[dir="ltr"] #S-chatView {
@@ -1218,6 +1220,8 @@
 		height:40px;
 		margin:20px 20px 10px;
 		border-radius:50%;
+		position: absolute;
+		z-index:10;
 	}
 	
 	#S-closeChat .ico {
@@ -1230,6 +1234,76 @@
 		-webkit-mask-repeat: no-repeat;
    		-webkit-mask-position: 5px center;
 		-webkit-mask-size: 36px;
+	}
+
+	.navSection {
+		border-bottom:solid 1px #eee;
+		color:#454545;
+	}
+
+	.navSection h4 {
+		font-weight:bold;
+		font-size:0.875em;	
+		color: #A0A0A0;
+		margin:0px;
+		padding:0px;
+	}
+	
+	.navSection ul {
+		margin:0px;
+		padding:0px;
+	}
+
+	.navSection .ico {
+		padding-left:26px;
+		background-repeat:no-repeat;
+		background-size:19px;
+    	background-position: 2px center;
+
+	}
+
+	.ico.leader {
+		background-image: url("/img/ico_award-outline.svg");
+	}
+	.ico.activity {
+		background-image: url("/img/ico_activity-outline.svg");
+	}
+	.ico.project {
+		background-image: url("/img/ico_heart-outline.svg");
+	}
+	.ico.grants {
+		background-image: url("/img/ico_radio-outline.svg");
+	}
+	.ico.new {
+		background-image: url("/img/ico_loader-outline.svg");
+	}
+	.ico.setup {
+		background-image: url("/img/ico_edit-outline.svg");
+	}
+	.ico.apply {
+		background-image: url("/img/ico_gift-outline.svg");
+	}
+	.ico.about {
+		background-image: url("/img/ico_bulb-outline.svg");
+	}
+
+	.anon.creature {
+		width:40px;
+		height:40px;
+		border-radius: 6px;
+		background-color:#D20150;
+		display: block;
+	}
+	
+	.anon.creature .ico {
+		background-color:#fff;
+		-webkit-mask-image: url("/img/ico_hippo-solid.svg");
+		-webkit-mask-repeat: no-repeat;
+   		-webkit-mask-position: center;
+		-webkit-mask-size: 26px;
+		width: 100%;
+		height: 100%;
+		display: block;
 	}
 </style>
 
@@ -1273,18 +1347,55 @@
 					<div id="S-navPanel">
 						<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/`); }}">
 							<Avatar size="thumbnail" profileImg="{profilePhoto}" />
-							<h1 style="margin-top:15px;">
-								Anonymous Chipmunk
+							<h1 style="margin-top:15px; display:flex;">
+								<div>
+									<span class="anon creature">
+										<span class="ico"></span>
+									</span>
+								</div>
+								<div style="align-items: center; display: flex; padding-left:10px;">
+    
+									<span>Anonymous Hippo</span>
+								</div>
 							</h1>
 						</header>
+						<!--
 						<div id="followingPanel" class="underlay">
 							<span on:click="{() => { resetToContentView('home'); navTo(`/`)} }"><b>0</b> Following</span> 
 							<span on:click="{() => { resetToContentView('home'); navTo(`/`)} }"><b>0</b> Followers</span> 
-						</div>
+						</div>-->
 						<nav>
-							<ul style="padding:5px 0px;">
-								<li on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo('/feed/Home'); }}">{$_('template.side_nav.home')}</li>
-								<li on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo('/feed/Apps'); }}">My Apps</li>
+							<ul style="padding:0px;">
+								<li class="navSection">
+									<h4>Updates</h4>
+									<ul>
+										<li class="ico leader" on:click="{() => { resetToContentView('home'); navTo('/feed/Home'); }}">Leader board</li>
+										<li class="ico activity" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Activity</li>
+								
+									</ul>
+								</li>
+								<li class="navSection">
+									<h4>Collections</h4>
+									<ul>
+										<li class="ico project" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Projects We Love</li>
+										<li class="ico grants" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Grants Provided</li>
+										<li class="ico new" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Newly Listed</li>
+									</ul>
+								</li>
+								<li class="navSection">
+									<h4>Kickstart</h4>
+									<ul>
+										<li class="ico setup" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Setup new project</li>
+										<li class="ico apply" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">Apply for grant</li>
+									</ul>
+								</li>
+								<li class="navSection">
+									<h4>Val-hölla</h4>
+									<ul>
+										<li class="ico about" on:click="{() => { resetToContentView('home'); navTo('/feed/Apps'); }}">About</li>
+								
+									</ul>
+								</li>
 								
 							</ul>
 						</nav>
@@ -1304,10 +1415,16 @@
 
 				<!-- Chat Menu -->
 				<aside id="S-chatView" bind:this="{chatview}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({chatMenuPos}, 0px, 0px);">
-					<div id="S-closeChat" on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">
-						<span class="ico"></span>
+					<div style="flex:1; display:flex; flex-direction:column;">
+						<div style="min-height:70px;">
+							<div id="S-closeChat" on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">
+								<span class="ico"></span>
+							</div>
+						</div>
+						<div style="flex:1;">
+							<iframe style="border:none;" title="chat" width="100%" height="100%" src="https://www.sol-talk.com/"></iframe>
+						</div>
 					</div>
-					<iframe style="border:none;" title="chat" width="100%" height="100%" src="https://www.sol-talk.com/"></iframe>
 				</aside>
 				<!-- xChat Menu -->
 				
