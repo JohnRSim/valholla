@@ -20,7 +20,9 @@
 	//utils
 	import { navTo } from '../route.js';
 
-	//stores
+	//ipfs
+	import { initIpfs } from '../../utils/ipfs.js';
+
 
 	//chain
 	import { 
@@ -66,7 +68,15 @@
 		isMounted = true;
 
 		demo();
+		launchIPFS();
 	});
+
+	/**
+	 * initIpfs
+	 **/
+	async function launchIPFS() {
+		initIpfs()
+	}
 
 	/**
 	 * pushJSON 
