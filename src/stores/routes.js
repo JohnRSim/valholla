@@ -107,8 +107,8 @@ const setup = {
             scrollBody: '#V-Collections',
             showBurger: true,
             showLogo:true,
-            rightSpacer:true,
             inlineHeaderNav:true,
+            showWallet:true,
             footer:[{
                 classes: 'home',
                 name: 'Home',
