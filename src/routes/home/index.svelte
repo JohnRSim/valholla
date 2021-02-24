@@ -81,6 +81,10 @@
 		max-width: 100%;
 		border-radius: 5px;
 	}
+
+	footer.spacer {
+		min-height:60px;
+	}
 </style>
 
 <svelte:head>
@@ -135,6 +139,7 @@
 				<p>Eth2.0 | The BSC Killer?</p>
 			</article>
 
+			<footer class="spacer"></footer>
 		</section>
 	</div>
 </div>
