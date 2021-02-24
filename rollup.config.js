@@ -44,7 +44,7 @@ export default {
 				dedupe: ['svelte'],
 				preferBuiltins: false
 			}),
-			commonjs({preferBuiltins: false}),
+			commonjs(),
 			json(),
 
 			legacy && babel({
@@ -95,10 +95,9 @@ export default {
 				emitFiles: false // already emitted by client build
 			}),
 			resolve({
-				dedupe: ['svelte'],
-				preferBuiltins: false
+				dedupe: ['svelte']
 			}),
-			commonjs({preferBuiltins: false}),
+			commonjs(),
 			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
