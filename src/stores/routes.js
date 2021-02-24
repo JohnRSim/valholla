@@ -72,8 +72,8 @@ const setup = {
             scrollBody: '#V-About',
             showBurger: true,
             showLogo:true,
-            rightSpacer:true,
             inlineHeaderNav:true,
+            showWallet:true,
         },
         '/debug': {
             scrollTarget: '#S-Auth.scrollable',
