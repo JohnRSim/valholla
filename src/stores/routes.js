@@ -23,6 +23,9 @@ const setup = {
         showWallet:false,
         showConnectToWallet:false,
         footer:[],
+        inlineHeaderNav:false,
+        inlineDoubleHeaderNav:false,
+        inlineDoubleHeaderLargeNav:false,
     },
     path: {
         '/': {
@@ -40,11 +43,12 @@ const setup = {
             showConnectToWallet:true,
         },
         '/home': {
-            scrollTarget: '#S-Auth.scrollable',
-            scrollBody: '#S-Auth',
+            scrollTarget: '#V-Home.scrollable',
+            scrollBody: '#V-Home',
             showBurger: true,
             showLogo:true,
             showWallet:true,
+            inlineHeaderNav:true,
             footer:[{
                 classes: 'home',
                 name: 'Home',

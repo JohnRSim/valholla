@@ -807,12 +807,13 @@
 
 		//helps to improve performance and disable animated transitions during scroll.
 		clearTimeout(detectUserScrollTimer);
-		if (!$sApp.userScrolling) {
+		/*if (!$sApp.userScrolling) {
 			sApp.updateVal('userScrolling',true);
 		}
 		detectUserScrollTimer = setTimeout(() => {
 			sApp.updateVal('userScrolling',false);
 		},66);
+		*/
 
 		if (displayNav) {
 			clearTimeout(scrollTimer);
