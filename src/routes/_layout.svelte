@@ -1286,6 +1286,21 @@
 	.ico.about {
 		background-image: url("/img/ico_bulb-outline.svg");
 	}
+	.ico.bug {
+		background-color:#666;
+		-webkit-mask-image: url("/img/ico_bug-solid.svg");
+		-webkit-mask-repeat: no-repeat;
+   		-webkit-mask-position: center;
+		-webkit-mask-size: 15px;
+		display: block;
+		width: 24px;
+	}
+
+	.debug {
+		display: flex;
+    	color: #666;
+
+	}
 
 	.anon.creature {
 		width:40px;
@@ -1402,6 +1417,10 @@
 						<footer>
 							<nav>
 								<ul>
+									<li class="debug">
+										<span class="ico bug"></span>
+										<span style="flex:1;">DEBUG</span>
+									</li>
 								</ul>
 							</nav>
 							<div id="S-version">
