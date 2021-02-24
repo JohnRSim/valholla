@@ -84,7 +84,7 @@
 </svelte:head>
 
 {#if (isMounted)}
-<div class="profile scrollable gpu_acc" id="V-home" style="transform: translate3d(0px, 60px, 0px);">
+<div class="profile scrollable gpu_acc" id="V-Home" style="transform: translate3d(0px, 60px, 0px);">
 	<div dir="auto" style="width:100%">
 		<section style="padding:0px 20px 40px 20px;">
 			<article class="card" on:click="{() => { window.open('https://forms.gle/jqQLA9CsDQgA4fjK7'); }}">
