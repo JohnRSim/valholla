@@ -68,11 +68,12 @@ const setup = {
             }],
         },
         '/about': {
-            scrollTarget: '#S-Auth.scrollable',
-            scrollBody: '#S-Auth',
+            scrollTarget: '#V-About.scrollable',
+            scrollBody: '#V-About',
             showBurger: true,
             showLogo:true,
             rightSpacer:true,
+            inlineHeaderNav:true,
         },
         '/debug': {
             scrollTarget: '#S-Auth.scrollable',
