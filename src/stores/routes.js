@@ -142,12 +142,12 @@ const setup = {
             },{
                 classes: 'updates',
                 name: 'Updates',
-                active: false,
+                active: true,
                 path: `/feed/Updates`,
             },{
                 classes: 'projects',
                 name: 'Projects',
-                active: true,
+                active: false,
                 path: `/collections/Projects`,
             }],
         },
