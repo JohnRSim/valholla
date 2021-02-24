@@ -290,8 +290,10 @@
 				scrolltarget = document.querySelector(scrolltarget);
 			}
 			scrollBody = document.querySelector(scrollBody);
-			scrolltarget.addEventListener('scroll',verticalScroll);
 			
+			if (scrolltarget) {
+				scrolltarget.addEventListener('scroll',verticalScroll);
+			}
 		});
 	});
 
