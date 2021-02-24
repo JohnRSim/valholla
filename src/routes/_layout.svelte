@@ -92,6 +92,9 @@
 	let showClose = false;
 	let showLogo = false;
 	let pageTitle = false;
+	let showWallet = false;
+	let showConnectToWallet = false;
+	let footer = [];
 
 	//wallet
 	let walletDomain = 'www.bonfida.com/wallet';//'www.sollet.io';
@@ -206,6 +209,9 @@
 			showBack = $sRoute.global.showBack;
 			showLogo = $sRoute.global.showLogo;
 			pageTitle = $sRoute.global.pageTitle;
+			showWallet = $sRoute.global.showWallet;
+			showConnectToWallet = $sRoute.global.showConnectToWallet;
+			footer = $sRoute.global.footer;
 
 			//update globals based off define route vars
 			let updateCheck = value.path;
@@ -238,7 +244,10 @@
 				showBack = (typeof(routeCheck.showBack) !== 'undefined')?routeCheck.showBack: showBack;
 				showLogo = (typeof(routeCheck.showLogo) !== 'undefined')?routeCheck.showLogo: showLogo;
 				pageTitle = (typeof(routeCheck.pageTitle) !== 'undefined')?routeCheck.pageTitle: pageTitle;
-
+				showWallet = (typeof(routeCheck.showWallet) !== 'undefined')?routeCheck.showWallet: showWallet;
+				showConnectToWallet = (typeof(routeCheck.showConnectToWallet) !== 'undefined')?routeCheck.showConnectToWallet: showConnectToWallet;
+				footer = (typeof(routeCheck.footer) !== 'undefined')?routeCheck.footer: footer;
+				
 				if (hasTabs) {
 					const currentPath = `${window.location.pathname}${window.location.search}`;
 					let tabPos = 0;
@@ -1367,7 +1376,7 @@
 					<div id="S-navPanel">
 						<header class="main" on:click="{() => { setTimeout(() => { resetToContentView('home'); },200); navTo(`/`); }}">
 							<Avatar size="thumbnail" profileImg="{profilePhoto}" />
-							<h1 style="margin-top:15px; display:flex;">
+							<h1 on:click|stopPropagation="{() => { resetToContentView('home'); navTo('/wallet');}}" style="margin-top:15px; display:flex;">
 								<div>
 									<span class="anon creature">
 										<span class="ico"></span>
@@ -1472,6 +1481,7 @@
 					on:signin="{() => { connect(); }}"
 					on:goBack="{(e) => { goBack(e.detail.path) }}"
 					on:updateWallet="{(e) => { updateWalletDomain(e.detail.name); }}"
+					on:wallet="{(e) => { navTo('/wallet'); }}"
 					showBack="{showBack}"
 					showBurger="{showBurger}"
 					leftSpacer="{leftSpacer}"
@@ -1479,6 +1489,8 @@
 					isAuthenticated="{false}" 
 					showLogo="{showLogo}"
 					pageTitle="{pageTitle}"
+					showConnectToWallet="{showConnectToWallet}"
+					showWallet="{showWallet}"
 					/>
 				<!-- xMobile HeaderBar -->
 				{/if}
