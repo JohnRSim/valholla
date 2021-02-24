@@ -1286,6 +1286,11 @@
 	.ico.about {
 		background-image: url("/img/ico_bulb-outline.svg");
 	}
+
+	.ico.home {
+		background-image: url("/img/ico_home-outline.svg");
+		
+	}
 	.ico.bug {
 		background-color:#666;
 		-webkit-mask-image: url("/img/ico_bug-solid.svg");
@@ -1381,6 +1386,11 @@
 						</div>-->
 						<nav>
 							<ul style="padding:0px;">
+								<li class="navSection">
+									<ul>
+										<li class="ico home" on:click="{() => { resetToContentView('home'); navTo('/home'); }}">Home</li>
+									</ul>
+								</li>
 								<li class="navSection">
 									<h4>Updates</h4>
 									<ul>
