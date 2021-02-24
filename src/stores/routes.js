@@ -20,6 +20,8 @@ const setup = {
         showBack:false,
         showLogo:false,
         pageTitle:false,
+        showWallet:false,
+        showConnectToWallet:false,
     },
     path: {
         '/': {
@@ -27,10 +29,11 @@ const setup = {
             scrollBody: '#S-Auth',
             displayNav: false,
         },
-        '/login/*': {
+        '/wallet': {
             scrollTarget: '#S-Auth.scrollable',
             scrollBody: '#S-Auth',
-            displayNav: false,
+            displayNav: true,
+            showConnectToWallet:true,
         },
         '/home': {
             scrollTarget: '#S-Auth.scrollable',

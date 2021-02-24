@@ -57,7 +57,7 @@
   export let isAuthenticated = false;
   export let showSearch = false;
   export let activeroute = false;
-  export let showLogin = false;
+  export let showConnectToWallet = false;
 
   let oldRoute = '';
   $: if (activeroute) {
@@ -307,7 +307,7 @@
   <!-- xRight -->
 </ul>
 
-{#if ((!isAuthenticated) && (showLogin))}
+{#if ((!isAuthenticated) && (showConnectToWallet))}
 <HeaderLogin 
   on:signin="{() => { dispatchEvent({action:'signin'}); }}"
   on:updateWallet="{(e) => { dispatchEvent(e.detail); }}"
