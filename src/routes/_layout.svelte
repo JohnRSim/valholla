@@ -1047,7 +1047,7 @@
 		left:0px;
 		right:0px;
 		z-index: 20;
-		background:#000;
+		background:#303841;
 	}
 
 	[dir="ltr"] #S-chatView {
@@ -1211,6 +1211,26 @@
 		will-change:opacity;
 		pointer-events: none;
 	}
+
+	#S-closeChat {
+		background-color:#161B19;
+		width:40px;
+		height:40px;
+		margin:20px 20px 10px;
+		border-radius:50%;
+	}
+	
+	#S-closeChat .ico {
+		background-color: var(--maskColor-ico);
+		-webkit-mask-image: var(--img-icon-back);
+		width:100%;
+		height:100%;
+		cursor: pointer;
+		display: block;
+		-webkit-mask-repeat: no-repeat;
+   		-webkit-mask-position: 5px center;
+		-webkit-mask-size: 36px;
+	}
 </style>
 
 <svelte:head>
@@ -1284,7 +1304,10 @@
 
 				<!-- Chat Menu -->
 				<aside id="S-chatView" bind:this="{chatview}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({chatMenuPos}, 0px, 0px);">
-					<div on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">Close Chat</div>
+					<div id="S-closeChat" on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">
+						<span class="ico"></span>
+					</div>
+					<iframe style="border:none;" title="chat" width="100%" height="100%" src="https://www.sol-talk.com/"></iframe>
 				</aside>
 				<!-- xChat Menu -->
 				
