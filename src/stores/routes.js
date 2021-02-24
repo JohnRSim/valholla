@@ -59,7 +59,7 @@ const setup = {
                 classes: 'updates',
                 name: 'Updates',
                 active: false,
-                path: `/`,
+                path: `/feed/Updates`,
             },{
                 classes: 'projects',
                 name: 'Projects',
@@ -119,7 +119,7 @@ const setup = {
                 classes: 'updates',
                 name: 'Updates',
                 active: false,
-                path: `/`,
+                path: `/feed/Updates`,
             },{
                 classes: 'projects',
                 name: 'Projects',
@@ -132,7 +132,24 @@ const setup = {
             scrollTarget: '.main svelte-virtual-list-viewport',
             showBurger: true,
             showLogo:true,
-            rightSpacer:true,
+            inlineHeaderNav:true,
+            showWallet:true,
+            footer:[{
+                classes: 'home',
+                name: 'Home',
+                active: false,
+                path: `/home`,
+            },{
+                classes: 'updates',
+                name: 'Updates',
+                active: false,
+                path: `/feed/Updates`,
+            },{
+                classes: 'projects',
+                name: 'Projects',
+                active: true,
+                path: `/collections/Projects`,
+            }],
         },
     }
 };
