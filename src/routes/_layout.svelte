@@ -1048,6 +1048,8 @@
 		right:0px;
 		z-index: 20;
 		background:#303841;
+		display:flex;
+		flex-direction:column
 	}
 
 	[dir="ltr"] #S-chatView {
@@ -1218,6 +1220,8 @@
 		height:40px;
 		margin:20px 20px 10px;
 		border-radius:50%;
+		position: absolute;
+		z-index:10;
 	}
 	
 	#S-closeChat .ico {
@@ -1387,10 +1391,16 @@
 
 				<!-- Chat Menu -->
 				<aside id="S-chatView" bind:this="{chatview}" class="gpu_accx" class:autoTransition="{enableAutoTransitions}" style="transform: translate3d({chatMenuPos}, 0px, 0px);">
-					<div id="S-closeChat" on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">
-						<span class="ico"></span>
+					<div style="flex:1; display:flex; flex-direction:column;">
+						<div style="min-height:70px;">
+							<div id="S-closeChat" on:click="{() => { setTimeout(() => { sApp.updateVal('updateActiveLayout','home'); },10); }}">
+								<span class="ico"></span>
+							</div>
+						</div>
+						<div style="flex:1;">
+							<iframe style="border:none;" title="chat" width="100%" height="100%" src="https://www.sol-talk.com/"></iframe>
+						</div>
 					</div>
-					<iframe style="border:none;" title="chat" width="100%" height="100%" src="https://www.sol-talk.com/"></iframe>
 				</aside>
 				<!-- xChat Menu -->
 				
