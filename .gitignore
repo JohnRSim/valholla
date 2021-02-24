@@ -21,3 +21,5 @@ bubblewrap/gradlew.bat
 bubblewrap/settings.gradle
 
 bubblewrap/store_icon.png
+
+src/service-worker.old.js
