@@ -32,6 +32,13 @@ const setup = {
             scrollBody: '#S-Auth',
             displayNav: false,
         },
+        '/home': {
+            scrollTarget: '#S-Auth.scrollable',
+            scrollBody: '#S-Auth',
+            showBurger: true,
+            showLogo:true,
+            rightSpacer:true,
+        },
         '/feed/Home': {
             scrollBody: '#S-Feed',
             scrollTarget: '.main svelte-virtual-list-viewport',

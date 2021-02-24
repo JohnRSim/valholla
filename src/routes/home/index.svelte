@@ -3,7 +3,7 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	//utils
-	import { navTo } from './route.js';
+	import { navTo } from '../route.js';
 
 	let isMounted = false;
 
@@ -29,7 +29,7 @@
 </svelte:head>
 
 {#if (isMounted)}
-<section>
+<section style="padding-top:60px;">
 	<!-- Jim Add your magic -->
 	... Return me to Ragnarok!!! arghh..
 </section>
