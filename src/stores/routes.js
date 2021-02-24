@@ -54,6 +54,7 @@ const setup = {
                 classes: 'home',
                 name: 'Home',
                 active: true,
+                path: `/home`,
             },{
                 classes: 'updates',
                 name: 'Updates',
@@ -63,7 +64,7 @@ const setup = {
                 classes: 'projects',
                 name: 'Projects',
                 active: false,
-                path: `/`,
+                path: `/collections/Projects`,
             }],
         },
         '/about': {
@@ -102,11 +103,28 @@ const setup = {
             rightSpacer:true,
         },
         '/collections/*': {
-            scrollTarget: '#S-Auth.scrollable',
-            scrollBody: '#S-Auth',
+            scrollTarget: '#V-Collections.scrollable',
+            scrollBody: '#V-Collections',
             showBurger: true,
             showLogo:true,
             rightSpacer:true,
+            inlineHeaderNav:true,
+            footer:[{
+                classes: 'home',
+                name: 'Home',
+                active: false,
+                path: `/home`,
+            },{
+                classes: 'updates',
+                name: 'Updates',
+                active: false,
+                path: `/`,
+            },{
+                classes: 'projects',
+                name: 'Projects',
+                active: true,
+                path: `/collections/Projects`,
+            }],
         },
         '/feed/*': {
             scrollBody: '#S-Feed',
