@@ -41,6 +41,7 @@ const setup = {
             showLogo:true,
             showWallet:true,
             showConnectToWallet:true,
+            inlineDoubleHeaderLargeNav:true,
         },
         '/home': {
             scrollTarget: '#V-Home.scrollable',
