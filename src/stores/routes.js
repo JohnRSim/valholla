@@ -77,6 +77,14 @@ const setup = {
             inlineHeaderNav:true,
             showWallet:true,
         },
+        '/egg': {
+            scrollTarget: '#V-Video.scrollable',
+            scrollBody: '#V-Video',
+            showBurger: true,
+            showLogo:true,
+            inlineHeaderNav:true,
+            showWallet:true,
+        },
         '/debug': {
             scrollTarget: '#S-Auth.scrollable',
             scrollBody: '#S-Auth',
