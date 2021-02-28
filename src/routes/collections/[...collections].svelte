@@ -63,12 +63,13 @@
 {#if (isMounted)}
 <div class="profile scrollable gpu_acc" id="V-Collections" style="transform: translate3d(0px, 60px, 0px);">
 	<div dir="auto" style="width:100%">
-		<section style="padding:0px 20px 40px 20px;">
+		<section style="padding:20px 15px 40px 15px;">
 
+			<!--<Projects />
 			<Projects />
 			<Projects />
-			<Projects />
-			<Projects />
+			<Projects />-->
+			<a href="/collections/project"><img src="/img/tmp/projects.png" alt="" /></a>
 
 			<footer class="spacer"></footer>
 		</section>

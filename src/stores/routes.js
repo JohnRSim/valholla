@@ -26,6 +26,8 @@ const setup = {
         inlineHeaderNav:false,
         inlineDoubleHeaderNav:false,
         inlineDoubleHeaderLargeNav:false,
+        showActiveWallet:false,
+        hideNav:false,
     },
     path: {
         '/': {
@@ -39,7 +41,7 @@ const setup = {
             displayNav: true,
             showBurger: true,
             showLogo:true,
-            showWallet:true,
+            showActiveWallet:true,
             showConnectToWallet:true,
             inlineDoubleHeaderLargeNav:true,
         },
@@ -127,9 +129,35 @@ const setup = {
                 path: `/collections/Projects`,
             }],
         },
+        '/collections/project': {
+            scrollTarget: '#V-Project.scrollable',
+            scrollBody: '#V-Project',
+            displayNav:false,
+            footer:[{
+                classes: 'home',
+                name: 'Campaign',
+                active: true,
+                path: `/home`,
+            },{
+                classes: 'updates',
+                name: 'Timeline',
+                active: false,
+                path: `/feed/Updates`,
+            },{
+                classes: 'projects',
+                name: 'Updates',
+                active: false,
+                path: `/collections/Projects`,
+            },{
+                classes: 'projects',
+                name: 'Stats',
+                active: false,
+                path: `/collections/Projects`,
+            }],
+        },
         '/feed/*': {
             scrollBody: '#S-Feed',
-            scrollTarget: '.main svelte-virtual-list-viewport',
+            scrollTarget: '#S-Feed',
             showBurger: true,
             showLogo:true,
             inlineHeaderNav:true,
