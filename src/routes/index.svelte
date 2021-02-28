@@ -129,22 +129,19 @@
 	<nav>
 		<ul>
 			<li>
-				<a class="ico_fb" target="_blank" rel="me noopener" href="https://www.facebook.com/val-holla">Facebook</a>
+				<a class="ico_fb" target="_blank" rel="me noopener" href="https://www.facebook.com/ValhollaDeFi">Facebook</a>
 			</li>
 			<li>
-				<a class="ico_ig" target="_blank" rel="me noopener" href="https://www.instagram.com/val-holla">Instagram</a>
+				<a class="ico_ig" target="_blank" rel="me noopener" href="https://www.instagram/valholladefi">Instagram</a>
 			</li>
 			<li>
-				<a class="ico_tw" target="_blank" rel="me noopener" href="https://twitter.com/val-holla">Twitter</a>
+				<a class="ico_tw" target="_blank" rel="me noopener" href="https://twitter.com/ValHlla2">Twitter</a>
 			</li>
 			<li>
-				<a class="ico_yt" target="_blank" rel="me noopener" href="https://www.youtube.com/channel/">Youtube</a>
+				<a style="background-color:pink;" class="ico_yt" target="_blank" rel="me noopener" href="/egg">Youtube</a>
 			</li>
 			<li>
-				<a class="ico_pi" target="_blank" rel="me noopener" href="https://www.pinterest.co.uk/val-holla/">Pinterest</a>
-			</li>
-			<li>
-				<a class="ico_md" target="_blank" rel="me noopener" href="https://mstdn.social/@val-holla">Mastodon</a>
+				<a class="ico_md" target="_blank" rel="me noopener" href="https://mstdn.social/@Valholla">Mastodon</a>
 			</li>
 			<li style="display:none;"><a href="/sitemap.xml">SiteMap</a></li>
 		</ul>
