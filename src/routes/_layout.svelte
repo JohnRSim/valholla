@@ -99,6 +99,7 @@
 	let inlineHeaderNav = false;
 	let inlineDoubleHeaderNav = false;
 	let inlineDoubleHeaderLargeNav = false;
+	let showActiveWallet = false;
 
 	//navbar height defaults
 	let headerSpace_small = 38;
@@ -226,6 +227,8 @@
 			inlineHeaderNav = $sRoute.global.inlineHeaderNav;
 			inlineDoubleHeaderNav = $sRoute.global.inlineDoubleHeaderNav;
 			inlineDoubleHeaderLargeNav = $sRoute.global.inlineDoubleHeaderLargeNav;
+			showActiveWallet = $sRoute.global.showActiveWallet;
+
 			
 			//update globals based off define route vars
 			let updateCheck = value.path;
@@ -264,6 +267,7 @@
 				inlineHeaderNav = (typeof(routeCheck.inlineHeaderNav) !== 'undefined')?routeCheck.inlineHeaderNav: inlineHeaderNav;
 				inlineDoubleHeaderNav = (typeof(routeCheck.inlineDoubleHeaderNav) !== 'undefined')?routeCheck.inlineDoubleHeaderNav: inlineDoubleHeaderNav;
 				inlineDoubleHeaderLargeNav = (typeof(routeCheck.inlineDoubleHeaderLargeNav) !== 'undefined')?routeCheck.inlineDoubleHeaderLargeNav: inlineDoubleHeaderLargeNav;
+				showActiveWallet = (typeof(routeCheck.showActiveWallet) !== 'undefined')?routeCheck.showActiveWallet: showActiveWallet;
 				
 				if (hasTabs) {
 					const currentPath = `${window.location.pathname}${window.location.search}`;
@@ -1701,6 +1705,7 @@
 					pageTitle="{pageTitle}"
 					showConnectToWallet="{showConnectToWallet}"
 					showWallet="{showWallet}"
+					showActiveWallet="{showActiveWallet}"
 					/>
 				<!-- xMobile HeaderBar -->
 				{/if}

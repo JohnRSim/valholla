@@ -59,6 +59,7 @@
   export let activeroute = false;
   export let showConnectToWallet = false;
   export let showWallet = false;
+  export let showActiveWallet = false;
 
   let oldRoute = '';
   $: if (activeroute) {
@@ -168,12 +169,19 @@
   .close {
     padding: 12px 15px;
   }
-  .wallet {
+  .wallet,
+  .walletActive {
     
     padding: 12px 15px;
   }
   .wallet .ico {
     -webkit-mask-image: url("/img/ico_shield-outline.svg");
+    width:36px;
+    height:100%;
+    -webkit-mask-size: 24px;
+  }
+  .walletActive .ico {
+    -webkit-mask-image: url("/img/ico_shield.svg");
     width:36px;
     height:100%;
     -webkit-mask-size: 24px;
@@ -314,6 +322,11 @@
   {/if}
   {#if (showWallet)}
   <li class="wallet"on:click="{() => { dispatchEvent({action:'wallet'}); }}">
+    <i class="ico "></i>
+  </li>
+  {/if}
+  {#if (showActiveWallet)}
+  <li class="walletActive"on:click="{() => { dispatchEvent({action:'wallet'}); }}">
     <i class="ico "></i>
   </li>
   {/if}

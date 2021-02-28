@@ -18,7 +18,7 @@ export const initIpfs = async () => {
             })
         ]
     });
-    console.log('>>>>>>>>>',result, result.ipfs,result.provider);
+    //console.log('>>>>>>>>>',result, result.ipfs,result.provider);
 };
 /*
 export const doAddFiles = (files) => async ({ dispatch, getIpfs }) => {

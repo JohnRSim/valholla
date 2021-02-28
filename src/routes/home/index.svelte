@@ -112,8 +112,11 @@
 				</footer>
 			</article>
 
-			<article class="card" style="margin-bottom:10px;">
-				<img src="/static/img/solana-tvl.png" alt="Solana Total Value Locked" class="tvl-chart" />
+			<article class="card" style="margin-bottom:10px; padding:5px;">
+				<header style="padding:10px; color:#888B8A; font-weight:bold;">
+					Total Value locked in DeFi
+				</header>
+				<img src="/img/solana-tvl.png" alt="Solana Total Value Locked" class="tvl-chart" />
 			</article>
 
 			<section class="grid">

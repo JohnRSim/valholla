@@ -21,7 +21,7 @@
 	import { navTo } from '../route.js';
 
 	//ipfs
-	import { initIpfs } from '../../utils/ipfs.js';
+	//import { initIpfs } from '../../utils/ipfs.js';
 
 
 	//chain
@@ -75,7 +75,7 @@
 	 * initIpfs
 	 **/
 	async function launchIPFS() {
-		initIpfs()
+		//initIpfs()
 	}
 
 	/**
@@ -141,6 +141,9 @@
 
 <style>
 
+	footer.spacer {
+		min-height:60px;
+	}
 </style>
 
 <svelte:head>
@@ -148,7 +151,13 @@
 </svelte:head>
 
 {#if (isMounted)}
-<section>
-	Hello World..
-</section>
+<div class="profile scrollable gpu_acc" id="S-Feed" style="transform: translate3d(0px, 60px, 0px);">
+	<div dir="auto" style="width:100%">
+		<section style="padding:20px 15px 40px 15px;">
+			<img src="/img/tmp/updates.png" alt="" />
+			
+			<footer class="spacer"></footer>
+		</section>
+	</div>
+</div>
 {/if}
