@@ -138,7 +138,7 @@
 				<a class="ico_tw" target="_blank" rel="me noopener" href="https://twitter.com/ValHlla2">Twitter</a>
 			</li>
 			<li>
-				<a style="background-color:pink;" class="ico_yt" target="_blank" rel="me noopener" href="/egg">Youtube</a>
+				<a style="background-color:pink;" class="ico_yt" href="/egg">Youtube</a>
 			</li>
 			<li>
 				<a class="ico_md" target="_blank" rel="me noopener" href="https://mstdn.social/@Valholla">Mastodon</a>
